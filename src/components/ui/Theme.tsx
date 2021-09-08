@@ -1,17 +1,17 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from '@material-ui/core/styles';
 
-const darkPrimary = "#9370DB";
-const darkSecondary = "#034068";
+const darkPrimary = '#9370DB';
+const darkSecondary = '#034068';
 
 export const lightTheme = createTheme({
   palette: {
-    type: "light",
+    type: 'light',
   },
 });
 
 export const darkTheme = createTheme({
   palette: {
-    type: "dark",
+    type: 'dark',
     primary: {
       main: darkPrimary,
     },

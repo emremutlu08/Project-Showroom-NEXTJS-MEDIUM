@@ -1,0 +1,39 @@
+/* REACT */
+import { useState } from 'react';
+
+/* MATERIAL UI */
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+/* COMPONENTS */
+import DarkModeToggle from './DarkModeToggle';
+import AppBarTitle from './AppBarTitle';
+import AppBarMenu from './AppBarMenu';
+
+const useStyles = makeStyles(() => ({
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+}));
+
+export default function AppBarComponent(props: {
+  darkMode: boolean;
+  handleDarkMode: Function;
+}) {
+  const { darkMode, handleDarkMode } = props;
+  const classes = useStyles();
+  const [openMenu, setOpenMenu] = useState(false);
+
+  return (
+    <AppBar position="relative">
+      <Toolbar className={classes.toolbar}>
+        <AppBarMenu setOpenMenu={setOpenMenu} openMenu={openMenu} />
+        <AppBarTitle />
+
+        <DarkModeToggle darkMode={darkMode} handleDarkMode={handleDarkMode} />
+      </Toolbar>
+    </AppBar>
+  );
+}

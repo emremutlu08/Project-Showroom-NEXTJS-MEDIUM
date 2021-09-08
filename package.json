@@ -7,21 +7,13 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
-    "axios": "^0.21.1",
-    "bcryptjs": "^2.4.3",
-    "clsx": "latest",
-    "firebase": "^8.10.0",
-    "firebase-admin": "^9.5.0",
-    "js-cookie": "^2.2.1",
-    "mongodb": "^3.6.9",
-    "mongoose": "^5.12.14",
-    "next": "latest",
+    "axios": "^0.21.4",
+    "material-react-toastify": "^1.0.1",
+    "next": "^11.1.2",
+    "notarealdb": "^0.2.2",
     "react": "latest",
-    "react-bootstrap": "^1.5.2",
     "react-dom": "latest",
-    "react-firebase-hooks": "^3.0.4",
-    "react-firebaseui": "^4.2.0",
-    "react-hook-form": "^7.14.0"
+    "react-hook-form": "^7.15.1"
   },
   "scripts": {
     "dev": "next",
@@ -30,17 +22,16 @@
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.2",
     "@types/next": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
+    "@types/node": "^16.7.13",
+    "@types/react": "^17.0.20",
     "@types/react-dom": "latest",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.25.1",
     "prettier": "^2.3.2",
-    "typescript": "latest"
+    "typescript": "^4.4.2"
   }
 }

@@ -1,44 +1,21 @@
+/* REACT */
+import { useState } from 'react';
+
 /* MATERIAL UI */
 
 // COMPONENTS
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import SelectAllIcon from '@material-ui/icons/SelectAll';
 
 // STYLES
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-/* ICONS */
-import {
-  ReactJs,
-  Express,
-  Flutter,
-  Nextdotjs,
-  Javascript,
-  Typescript,
-  Mongodb,
-  Nodedotjs,
-  Styledcomponents,
-  Firebase,
-  CssThree,
-  Html5,
-  Redux,
-  Jest,
-  Tailwindcss,
-  Mysql,
-  Postcss,
-  Postgresql,
-  Nestjs,
-  Graphql,
-  Docker,
-  Bootstrap,
-  Digitalocean,
-  Materialui,
-} from '@icons-pack/react-simple-icons';
+/* COMPONENTS */
+import FilterButton from './FilterButton';
+import { FilterButtonsContext } from './FilterButtonsContext';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -73,254 +50,77 @@ const useStyles = makeStyles((theme) => ({
 /* MAIN FUNCTION */
 export default function FilterButtons() {
   const classes = useStyles();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const [selectAll, setSelectAll] = useState(true);
 
   return (
-    <div className={classes.heroButtons}>
-      <Grid
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        spacing={1}
-      >
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="React (20)"
-            icon={<ReactJs className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Javascript (101)"
-            icon={<Javascript className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Next.JS (100)"
-            icon={<Nextdotjs className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Express (1)"
-            icon={<Express className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="React Native (5)"
-            icon={<ReactJs className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Flutter (10)"
-            icon={<Flutter className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Typescript (5)"
-            icon={<Typescript className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="MongoDB (5)"
-            icon={<Mongodb className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Node.js (5)"
-            icon={<Nodedotjs className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Styled Components (5)"
-            icon={<Styledcomponents className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Firebase (5)"
-            icon={<Firebase className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Css3 (5)"
-            icon={<CssThree className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Html5 (5)"
-            icon={<Html5 className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Redux (5)"
-            icon={<Redux className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Jest (5)"
-            icon={<Jest className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="TailwindCSS (5)"
-            icon={<Tailwindcss className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Mysql (5)"
-            icon={<Mysql className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Postcss (5)"
-            icon={<Postcss className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Postgresql (5)"
-            icon={<Postgresql className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="NestJS (5)"
-            icon={<Nestjs className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="GraphQL (5)"
-            icon={<Graphql className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Docker (5)"
-            icon={<Docker className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Bootstrap (5)"
-            icon={<Bootstrap className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Digitalocean (5)"
-            icon={<Digitalocean className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-        <Grid item>
-          <Chip
-            size={matches ? 'medium' : 'small'}
-            label="Material Ui (5)"
-            icon={<Materialui className={classes.iconSize} />}
-            onClick={() => console.log('hello')}
-            color="primary"
-          />
-        </Grid>
-      </Grid>
-      <div className={classes.topSpace} />
-      <Box display="flex" justifyContent="flex-end">
-        <Button
-          variant="contained"
-          size="small"
-          color="secondary"
-          startIcon={<DeleteIcon />}
+    <FilterButtonsContext.Provider value={{ selectAll }}>
+      <div className={classes.heroButtons}>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={1}
         >
-          Remove selections
-        </Button>
-      </Box>
-    </div>
+          <FilterButton label="React (20)" iconName="ReactJs" />
+          <FilterButton label="Javascript (120)" iconName="Javascript" />
+          <FilterButton label="Next.JS (10)" iconName="Nextdotjs" />
+          <FilterButton label="Express (30)" iconName="Express" />
+          <FilterButton label="React Native (27)" iconName="ReactJs" />
+
+          <FilterButton label="Flutter (20)" iconName="Flutter" />
+          <FilterButton label="Typescript (120)" iconName="Typescript" />
+          <FilterButton label="MongoDB (10)" iconName="Mongodb" />
+          <FilterButton label="Node.js (30)" iconName="Nodedotjs" />
+          <FilterButton
+            label="Styled Components (27)"
+            iconName="Styledcomponents"
+          />
+
+          <FilterButton label="Firebase (20)" iconName="Firebase" />
+          <FilterButton label="Css3 (120)" iconName="CssThree" />
+          <FilterButton label="Html5 (10)" iconName="Html5" />
+          <FilterButton label="Redux (30)" iconName="Redux" />
+          <FilterButton label="Jest (27)" iconName="Jest" />
+
+          <FilterButton label="TailwindCSS (20)" iconName="Tailwindcss" />
+          <FilterButton label="Mysql (120)" iconName="Mysql" />
+          <FilterButton label="Postcss (10)" iconName="Postcss" />
+          <FilterButton label="Postgresql (30)" iconName="Postgresql" />
+          <FilterButton label="NestJS (27)" iconName="Nestjs" />
+
+          <FilterButton label="GraphQL (20)" iconName="Graphql" />
+          <FilterButton label="Docker (120)" iconName="Docker" />
+          <FilterButton label="Bootstrap (10)" iconName="Bootstrap" />
+          <FilterButton label="Digitalocean (30)" iconName="Digitalocean" />
+          <FilterButton label="Material Ui (27)" iconName="Materialui" />
+        </Grid>
+        <div className={classes.topSpace} />
+        <Box
+          display="flex"
+          justifyContent="flex-end"
+          onClick={() => setSelectAll(!selectAll)}
+        >
+          {selectAll ? (
+            <Button
+              variant="contained"
+              size="small"
+              color="secondary"
+              startIcon={<DeleteIcon />}
+            >
+              Remove selections
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              size="small"
+              color="secondary"
+              startIcon={<SelectAllIcon />}
+            >
+              Select All
+            </Button>
+          )}
+        </Box>
+      </div>
+    </FilterButtonsContext.Provider>
   );
 }

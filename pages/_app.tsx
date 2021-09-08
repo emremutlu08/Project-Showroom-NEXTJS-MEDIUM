@@ -27,6 +27,20 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   // Main Classes
   const useStyles = makeStyles(() => ({
+    '@global': {
+      '*::-webkit-scrollbar': {
+        width: '10px',
+      },
+      '*::-webkit-scrollbar-track': {
+        background: '#808080',
+      },
+      '*::-webkit-scrollbar-thumb': {
+        background: '#b2b2b2',
+      },
+      '*::-webkit-scrollbar-thumb:hover': {
+        background: '#d8d8d8',
+      },
+    },
     main: {
       backgroundColor: theme.palette.background.default,
     },
@@ -34,9 +48,8 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   const classes = useStyles();
 
   // Dark Mode Handler
-  const handleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  const handleDarkMode = () => setDarkMode(!darkMode);
+
   return (
     <>
       <Head>

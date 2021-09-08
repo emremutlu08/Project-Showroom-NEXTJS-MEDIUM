@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
 /* COMPONENTS */
-import AddProjectForm from '../../src/components/add-project/AddProjectForm';
+import FormInputText from '../../src/components/formComponents/FormInputText';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -22,12 +22,12 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* MAIN FUNCTION */
-export default function AddProjectPage() {
+export default function CardGalleryItems() {
   const classes = useStyles();
 
   return (
     <Box className={classes.main}>
-      <AddProjectForm />
+      <FormInputText />
       <div className={classes.fillRest} />
     </Box>
   );

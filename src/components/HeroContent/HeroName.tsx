@@ -2,10 +2,10 @@
 import Typography from '@material-ui/core/Typography';
 
 export interface HeroNameProps {
-  fullName: String;
+  fullname: String;
 }
 
-export default function HeroName({ fullName }: HeroNameProps) {
+export default function HeroName({ fullname }: HeroNameProps) {
   return (
     <Typography
       component="h1"
@@ -14,7 +14,7 @@ export default function HeroName({ fullName }: HeroNameProps) {
       color="textPrimary"
       gutterBottom
     >
-      {fullName}
+      {fullname}
     </Typography>
   );
 }

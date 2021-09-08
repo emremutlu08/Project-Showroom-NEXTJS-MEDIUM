@@ -1,6 +1,5 @@
-import React from 'react';
+/* MATERIAL UI */
 import { makeStyles } from '@material-ui/core/styles';
-
 import Container from '@material-ui/core/Container';
 import { Divider } from '@material-ui/core';
 
@@ -38,17 +37,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3, 4, 5, 6];
 
-export default function Footer() {
+export function getStaticProps() {
+  return {
+    props: {
+      posts: ['a', 'b'],
+    },
+  };
+}
+
+export default function CardGallery(props: any) {
   const classes = useStyles();
+
+  console.log(props); // Will log props passed in `getStaticProps`
+
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      {/* Will be added! */}
       <FilterButtons />
       <Divider variant="middle" light className={classes.topSpace} />
       <div className={classes.allSpace} />
       {/* End hero unit */}
+      <PaginationOutlined />
+      <div className={classes.allSpace} />
       <CardGalleryItems cards={cards} />
       <div className={classes.allSpace} />
       <PaginationOutlined />

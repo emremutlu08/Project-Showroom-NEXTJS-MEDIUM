@@ -1,6 +1,10 @@
 /* COMPONENTS */
-import Main from './../src/components/Main';
+import Main from '../src/components/Main';
 
-export default function Album() {
-  return <Main />;
+export default function IndexPage() {
+  return (
+    <>
+      <Main />
+    </>
+  );
 }

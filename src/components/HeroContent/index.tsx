@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeroContent() {
   const classes = useStyles();
+
   return (
     <div className={classes.heroContent}>
       <Container maxWidth="md">
-        <HeroName fullName={'EMRE MUTLU'} />
+        <HeroName fullname={'EMRE MUTLU'} />
         <HeroDetails details={'I am a frontend and mobile app developer.'} />
         <div className={classes.topSpace} />
         <HeroButtons
