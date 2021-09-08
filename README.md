@@ -1,26 +1,6 @@
 # Next.js with TypeScript example
 
-[PROJECT ADDRESS](https://udemy-certification-showroom.vercel.app/)
-
-## How to use
-
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
-
-```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs-with-typescript
-cd nextjs-with-typescript
-```
-
-Install it and run:
-
-```sh
-npm install
-npm run dev
-```
-
-or:
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/nextjs-with-typescript)
+[PROJECT ADDRESS](https://project-showroom.vercel.app/)
 
 ## The idea behind the example
 

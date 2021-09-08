@@ -50,7 +50,7 @@ export function getStaticProps() {
 export default function CardGallery(props: any) {
   const classes = useStyles();
 
-  console.log(props); // Will log props passed in `getStaticProps`
+  console.log(props, 'CardGallery (index.tsx:53)'); // Will log props passed in `getStaticProps`
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
