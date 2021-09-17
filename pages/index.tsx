@@ -41,7 +41,9 @@ IndexPage.defaultProps = {
 export const getServerSideProps: GetServerSideProps = async () => {
   const projects = await api.get('projects');
   let allProjects = projects.data;
+  console.log(projects.data, ':44');
   if (!!!allProjects) allProjects = notActualProjects;
+
   return {
     props: {
       projects: allProjects || null,
