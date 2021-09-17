@@ -7,8 +7,14 @@ const fs = require('fs');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const base = path.join('./public');
+const base = path.join('./');
 const localDbPath = path.join(base, 'localDb');
+
+const m1 = path.join('./', '..');
+const m2 = path.join('./', '..', '..');
+const m3 = path.join('./', '..', '..', '..');
+const m4 = path.join('./', '..', '..', '..', '..');
+const m5 = path.join('./', '..', '..', '..', '..', '..');
 
 const path1 = path.resolve(base);
 console.log(path1, ':13');
@@ -18,6 +24,24 @@ fs.readdirSync(base).forEach((file: any) => {
 fs.readdirSync(localDbPath).forEach((file: any) => {
   console.log(file, '=>localDbPath:19');
 });
+
+/* */
+fs.readdirSync(m1).forEach((file: any) => {
+  console.log(file, '=>m1:16');
+});
+fs.readdirSync(m2).forEach((file: any) => {
+  console.log(file, '=>m2:16');
+});
+fs.readdirSync(m3).forEach((file: any) => {
+  console.log(file, '=>m3:16');
+});
+fs.readdirSync(m4).forEach((file: any) => {
+  console.log(file, '=>m4:16');
+});
+fs.readdirSync(m5).forEach((file: any) => {
+  console.log(file, '=>m5:16');
+});
+
 const store = new DataStore(localDbPath);
 const projects = store.collection('projects');
 
