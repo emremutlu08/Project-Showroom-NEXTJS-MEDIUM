@@ -10,9 +10,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core';
 
 /* COMPONENTS */
-import { lightTheme, darkTheme } from '../components/ui/Theme';
-import Footer from '../components/Footer';
-import AppBarComponent from '../components/AppBarComponent';
+import { lightTheme, darkTheme } from '../src/components/ui/Theme';
+import Footer from '../src/components/Footer';
+import AppBarComponent from '../src/components/AppBarComponent';
 
 /* PROPS INTERFACE */
 export interface MyAppProps<P extends object = {}> {

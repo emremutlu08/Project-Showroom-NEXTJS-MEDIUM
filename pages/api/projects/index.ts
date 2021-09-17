@@ -1,47 +1,9 @@
-/* COMPONENTS */
-const { DataStore } = require('notarealdb');
-const path = require('path');
-const fs = require('fs');
+/* DATABASE */
+import dbConnect from '../../../lib/dbConnect';
+import Projects from '../../../models/Projects';
 
 /* NEXTJS */
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-/* DATABASE */
-const base = path.join('./');
-const localDbPath = path.join(base, 'localDb');
-
-const m1 = path.join('./', '..');
-const m2 = path.join('./', '..', '..');
-const m3 = path.join('./', '..', '..', '..');
-const m4 = path.join('./', '..', '..', '..', '..');
-const m5 = path.join('./', '..', '..', '..', '..', '..');
-
-const path1 = path.resolve(base); /* */
-fs.readdirSync(m1).forEach((file: any) => {
-  console.log(file, '=>m1:16');
-});
-fs.readdirSync(m2).forEach((file: any) => {
-  console.log(file, '=>m2:16');
-});
-fs.readdirSync(m3).forEach((file: any) => {
-  console.log(file, '=>m3:16');
-});
-fs.readdirSync(m4).forEach((file: any) => {
-  console.log(file, '=>m4:16');
-});
-fs.readdirSync(m5).forEach((file: any) => {
-  console.log(file, '=>m5:16');
-});
-console.log(path1, ':13');
-fs.readdirSync(base).forEach((file: any) => {
-  console.log(file, '=>base:16');
-});
-fs.readdirSync(localDbPath).forEach((file: any) => {
-  console.log(file, '=>localDbPath:19');
-});
-
-const store = new DataStore(localDbPath);
-const projects = store.collection('projects');
 
 /* MESSAGES */
 import {
@@ -52,7 +14,7 @@ import {
   PROJECT_ADDED_ERROR,
   WRONG_METHOD,
   FILL_AREAS,
-} from '../../../../lib/api/projects/messages';
+} from '../../../lib/api/projects/messages';
 
 /* MAIN FUNCTION */
 export default async function handler(
@@ -60,6 +22,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   let { method, body } = req;
+  await dbConnect();
 
   if (method === 'POST') {
     const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
@@ -110,7 +73,7 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const projectList = projects.list();
+        const projectList = await Projects.find({});
         res.status(200).json({
           success: true,
           data: projectList,
@@ -129,11 +92,12 @@ export default async function handler(
     case 'POST':
       try {
         body.createdAt = Date.now();
-        const id = projects.create(body);
-        const createdData = { id, ...body };
+        const project = await Projects.create(
+          req.body,
+        ); /* create a new model in the database */
         res.status(201).json({
           success: true,
-          data: createdData,
+          data: project,
           message: PROJECT_ADDED,
           loading: false,
         });

@@ -29,7 +29,7 @@ import {
   ITEM_DELETED,
   ITEM_DELETED_ERROR,
   WRONG_METHOD,
-} from '../../../../lib/api/projects/messages';
+} from '../../../lib/api/projects/messages';
 
 /* MAIN FUNCTION */
 export default async function handler(
