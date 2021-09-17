@@ -1,23 +1,9 @@
-/* COMPONENTS */
-const { DataStore } = require('notarealdb');
-const paths = require('path');
+/* DATABASE */
+import dbConnect from '../../../lib/dbConnect';
+import Projects from '../../../models/Projects';
 
 /* NEXTJS */
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-/* DATABASE */
-const localDbPath = paths.join(
-  __dirname,
-  '..',
-  '..',
-  '..',
-  '..',
-  'src',
-  'localDb',
-);
-console.log(localDbPath, '[id]:10');
-const store = new DataStore(localDbPath);
-const projects = store.collection('projects');
 
 /* MESSAGES */
 import {
@@ -41,6 +27,7 @@ export default async function handler(
     method,
     body,
   } = req;
+  await dbConnect();
   const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
   const isEditableMethod = method === 'PUT' || method === 'DELETE';
   let { pw } = body;
@@ -79,7 +66,7 @@ export default async function handler(
   switch (method) {
     case 'GET' /* Get a model by its ID */:
       try {
-        const galleryItem = projects.get(id);
+        const galleryItem = await Projects.findById(id);
 
         if (!!!galleryItem) {
           return res.status(400).json({
@@ -106,7 +93,7 @@ export default async function handler(
       try {
         const updatedData = { id, ...body };
         // update an item
-        projects.update(updatedData);
+        await Projects.findByIdAndUpdate(id, updatedData);
         res.status(200).json({
           success: true,
           data: updatedData,
@@ -122,7 +109,7 @@ export default async function handler(
 
     case 'DELETE' /* Delete a model by its ID */:
       try {
-        projects.delete(id);
+        await Projects.findByIdAndDelete(id);
         res.status(200).json({
           success: true,
           data: {},
