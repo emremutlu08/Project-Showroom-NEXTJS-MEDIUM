@@ -6,7 +6,7 @@ const paths = require('path');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const store = new DataStore(paths.join(process.cwd(), 'localDb'));
+const store = new DataStore(paths.join(process.cwd(), 'src', 'localDb'));
 const projects = store.collection('projects');
 
 /* MESSAGES */
