@@ -12,6 +12,7 @@ const pathTwo = paths.join(__dirname, '..');
 const pathThree = paths.join(__dirname, '..', '..');
 const pathFour = paths.join(__dirname, '..', '..', '..');
 const basePath = paths.join(__dirname, '..', '..', '..', '..');
+const pathFive = paths.join(__dirname, '..', '..', '..', '..', '..');
 const localDbPath = paths.join(basePath, 'src', 'localDb');
 
 fs.readdirSync(pathOne).forEach((file: any) => {
@@ -34,7 +35,11 @@ fs.readdirSync(basePath).forEach((file: any) => {
   console.log(file, '=> basePath:34');
 });
 
-console.log(localDbPath, ':37');
+fs.readdirSync(pathFive).forEach((file: any) => {
+  console.log(file, '=> pathFive:39');
+});
+
+console.log(localDbPath, ':42');
 const store = new DataStore(localDbPath);
 const projects = store.collection('projects');
 
