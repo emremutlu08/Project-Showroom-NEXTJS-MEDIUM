@@ -25,16 +25,44 @@ const useStyles = makeStyles((theme) => ({
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link
-        href="https://www.linkedin.com/in/emremutlu8/"
-        target="_blank"
-        color="inherit"
-      >
-        PROJECT GALLERY By Emre MUTLU
-      </Link>{' '}
+      <div>
+        Built by{' '}
+        <Link
+          href="https://www.linkedin.com/in/emremutlu8/"
+          target="_blank"
+          color="inherit"
+        >
+          Emre MUTLU
+        </Link>{' '}
+        for his usage.
+      </div>{' '}
+      <div>
+        Copyright © by{' '}
+        <Link
+          href="https://www.linkedin.com/in/emremutlu8/"
+          target="_blank"
+          color="inherit"
+        >
+          Emre MUTLU
+        </Link>
+        .
+      </div>
+      <div>
+        You are 100% allowed to use this webpage for both personal and
+        commercial use, but NOT to claim it as your own app.
+      </div>{' '}
+      <div>
+        A credit to the original author,{' '}
+        <Link
+          href="https://www.linkedin.com/in/emremutlu8/"
+          target="_blank"
+          color="inherit"
+        >
+          Emre MUTLU
+        </Link>
+        , is of course highly appreciated!
+      </div>
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -62,7 +90,13 @@ export default function Footer() {
           color="textSecondary"
           component="p"
         >
-          I can build your dream apps with React and React Native!
+          <Link
+            href="https://www.linkedin.com/in/emremutlu8/"
+            target="_blank"
+            color="inherit"
+          >
+            I can build your dream apps with Next.JS
+          </Link>
         </Typography>
         <div className={classes.gap} />
         <Typography

@@ -4,26 +4,37 @@
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 
+// STYLES
+import { makeStyles } from '@material-ui/core/styles';
+
+/* CUSTOM STYLES */
+const useStyles = makeStyles(() => ({
+  actions: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+}));
+
 /* MAIN FUNCTION */
-export default function CardActionButtons() {
+export default function CardActionButtons({
+  leftTitle = '',
+  leftUrl = '',
+  rightTitle = '',
+  rightUrl = '',
+}: any) {
+  const classes = useStyles();
   return (
-    <CardActions>
-      <Button
-        size="small"
-        color="primary"
-        href="https://udemy-certificate.s3.amazonaws.com/image/UC-ee77a79b-0578-48ee-9a75-e5c63e5453b4.jpg"
-        target="_blank"
-      >
-        View Certificate
-      </Button>
-      <Button
-        size="small"
-        color="primary"
-        href="https://github.com/emremutlu08?tab=repositories"
-        target="_blank"
-      >
-        View Codes On My GitHub
-      </Button>
+    <CardActions className={classes.actions}>
+      {leftUrl && (
+        <Button size="small" color="primary" href={leftUrl} target="_blank">
+          {leftTitle}
+        </Button>
+      )}
+      {rightUrl && (
+        <Button size="small" color="primary" href={rightUrl} target="_blank">
+          {rightTitle}
+        </Button>
+      )}
     </CardActions>
   );
 }

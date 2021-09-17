@@ -45,7 +45,7 @@ export default function CardGalleryHeader() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={handleClose} disabled>
               <ListItemIcon>
                 <DeleteIcon fontSize="small" />
               </ListItemIcon>

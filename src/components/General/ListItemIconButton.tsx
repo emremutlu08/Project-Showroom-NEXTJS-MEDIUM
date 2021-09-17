@@ -13,17 +13,16 @@ export default function ListItemIconButton(props: {
   url?: URL;
   text: String;
   ListIcon: typeof MailIcon;
-  onClick?: Function;
   closeMenu: Function;
+  disabled?: boolean;
 }) {
-  const { url, text, ListIcon, onClick, closeMenu } = props;
+  const { url, text, ListIcon, closeMenu, disabled = false } = props;
   return (
-    <ListItem button onClick={closeMenu}>
+    <ListItem button onClick={closeMenu} disabled={disabled}>
       <ListItemIcon>
         <ListIcon />
       </ListItemIcon>
       {url && <LinkElement url={url} text={text} />}
-      {onClick && <LinkElement onClick={onClick} text={text} />}
     </ListItem>
   );
 }

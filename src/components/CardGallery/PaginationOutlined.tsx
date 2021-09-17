@@ -9,6 +9,10 @@ import Pagination from '@material-ui/lab/Pagination';
 // STYLES
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
+/* COMPONENTS */
+import { ITEMS_PER_PAGE } from '../General/PaginateFunc';
+import GetCurrentPage from '../General/GetCurrentPage';
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -21,11 +25,18 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export default function PaginationOutlined() {
+/* PROPS INTERFACE */
+export interface PaginationOutlinedProps {
+  length: number;
+}
+
+export default function PaginationOutlined({
+  length,
+}: PaginationOutlinedProps) {
   // Router
   const router = useRouter();
-  const query = router.query;
-  const page = parseInt(query.page);
+  const page = GetCurrentPage();
+  const pageLength = Math.round(length / ITEMS_PER_PAGE);
 
   // Styles
   const classes = useStyles();
@@ -37,7 +48,7 @@ export default function PaginationOutlined() {
   return (
     <div className={classes.root}>
       <Pagination
-        count={10}
+        count={pageLength}
         variant="outlined"
         color="primary"
         onChange={onPageChange}

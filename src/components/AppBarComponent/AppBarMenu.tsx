@@ -43,6 +43,7 @@ export default function AppBarMenu(props: {
           text={secondItem.text}
           ListIcon={InboxIcon}
           closeMenu={closeMenu}
+          disabled={true}
         />
         <Divider />
       </>

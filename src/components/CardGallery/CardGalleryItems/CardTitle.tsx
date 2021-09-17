@@ -5,7 +5,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
 /* MAIN FUNCTION */
-export default function CardTitle() {
+export default function CardTitle({ title }: any) {
   return (
     <Typography gutterBottom variant="h6" component="h2">
       <Link
@@ -13,7 +13,7 @@ export default function CardTitle() {
         underline="none"
         target="_blank"
       >
-        The Complete JavaScript Course 2021: From Zero to Expert!
+        {title}
       </Link>
     </Typography>
   );

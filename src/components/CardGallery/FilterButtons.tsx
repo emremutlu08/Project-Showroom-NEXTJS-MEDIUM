@@ -1,5 +1,5 @@
 /* REACT */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 /* MATERIAL UI */
 
@@ -16,6 +16,9 @@ import { makeStyles } from '@material-ui/core/styles';
 /* COMPONENTS */
 import FilterButton from './FilterButton';
 import { FilterButtonsContext } from './FilterButtonsContext';
+
+/* CONTEXTS */
+import { GeneratedContext } from '../Contexts';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -49,9 +52,27 @@ const useStyles = makeStyles((theme) => ({
 
 /* MAIN FUNCTION */
 export default function FilterButtons() {
+  const props = useContext(GeneratedContext);
   const classes = useStyles();
   const [selectAll, setSelectAll] = useState(true);
-
+  const projectList = props?.projects.data;
+  const count: any = {};
+  projectList?.map((project) => {
+    const { skillTags }: any = project;
+    skillTags.sort();
+    skillTags.forEach((i: string) => {
+      count[i] = (count[i] || 0) + 1;
+    });
+  });
+  const FilterButtons = Object.entries(count).map((button, i) => {
+    return (
+      <FilterButton
+        label={`${button[0]} (${button[1]})`}
+        iconName={button[0]}
+        key={`${button}${i}`}
+      />
+    );
+  });
   return (
     <FilterButtonsContext.Provider value={{ selectAll }}>
       <div className={classes.heroButtons}>
@@ -61,64 +82,31 @@ export default function FilterButtons() {
           alignItems="center"
           spacing={1}
         >
-          <FilterButton label="React (20)" iconName="ReactJs" />
-          <FilterButton label="Javascript (120)" iconName="Javascript" />
-          <FilterButton label="Next.JS (10)" iconName="Nextdotjs" />
-          <FilterButton label="Express (30)" iconName="Express" />
-          <FilterButton label="React Native (27)" iconName="ReactJs" />
-
-          <FilterButton label="Flutter (20)" iconName="Flutter" />
-          <FilterButton label="Typescript (120)" iconName="Typescript" />
-          <FilterButton label="MongoDB (10)" iconName="Mongodb" />
-          <FilterButton label="Node.js (30)" iconName="Nodedotjs" />
-          <FilterButton
-            label="Styled Components (27)"
-            iconName="Styledcomponents"
-          />
-
-          <FilterButton label="Firebase (20)" iconName="Firebase" />
-          <FilterButton label="Css3 (120)" iconName="CssThree" />
-          <FilterButton label="Html5 (10)" iconName="Html5" />
-          <FilterButton label="Redux (30)" iconName="Redux" />
-          <FilterButton label="Jest (27)" iconName="Jest" />
-
-          <FilterButton label="TailwindCSS (20)" iconName="Tailwindcss" />
-          <FilterButton label="Mysql (120)" iconName="Mysql" />
-          <FilterButton label="Postcss (10)" iconName="Postcss" />
-          <FilterButton label="Postgresql (30)" iconName="Postgresql" />
-          <FilterButton label="NestJS (27)" iconName="Nestjs" />
-
-          <FilterButton label="GraphQL (20)" iconName="Graphql" />
-          <FilterButton label="Docker (120)" iconName="Docker" />
-          <FilterButton label="Bootstrap (10)" iconName="Bootstrap" />
-          <FilterButton label="Digitalocean (30)" iconName="Digitalocean" />
-          <FilterButton label="Material Ui (27)" iconName="Materialui" />
+          {FilterButtons}
         </Grid>
         <div className={classes.topSpace} />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          onClick={() => setSelectAll(!selectAll)}
-        >
-          {selectAll ? (
-            <Button
-              variant="contained"
-              size="small"
-              color="secondary"
-              startIcon={<DeleteIcon />}
-            >
-              Remove selections
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              size="small"
-              color="secondary"
-              startIcon={<SelectAllIcon />}
-            >
-              Select All
-            </Button>
-          )}
+        <Box display="flex" justifyContent="flex-end">
+          <span onClick={() => setSelectAll(!selectAll)}>
+            {selectAll ? (
+              <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                startIcon={<DeleteIcon />}
+              >
+                Remove selections
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                startIcon={<SelectAllIcon />}
+              >
+                Select All
+              </Button>
+            )}
+          </span>
         </Box>
       </div>
     </FilterButtonsContext.Provider>

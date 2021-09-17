@@ -1,158 +1,173 @@
 [
   {
-    "id": "Bkevg3VfK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "Try this",
+    "id": "BJPboeGmF",
+    "projectTitle": " Project Showroom",
+    "thumbnailUrl": "/assets/thumbnails/ProjectShowroom.png",
+    "description": "Show your projects",
     "skillTags": [
+      "Nextdotjs",
       "ReactJs",
-      "CssThree"
+      "Materialui",
+      "Web-App",
+      "Typescript",
+      "Javascript"
     ],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://project-showroom.vercel.app/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631006807687
+    "rightButtonUrl": "https://github.com/emremutlu08/Project-Showroom",
+    "createdAt": 1631877886766
   },
   {
-    "id": "ryE-hmHMK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "New desc",
+    "id": "Sk_40gfQF",
+    "projectTitle": "Digigammon",
+    "thumbnailUrl": "/assets/thumbnails/Digigammon.png",
+    "description": "I build this app by using the MERN stack.",
     "skillTags": [
+      "Mongodb",
+      "Express",
       "ReactJs",
-      "CssThree"
+      "Nodedotjs",
+      "CssThree",
+      "Html5",
+      "Web-App"
     ],
+    "leftButtonTitle": "View Online",
+    "leftButtonUrl": "https://digigammon.com/",
+    "rightButtonTitle": "View Codes",
+    "rightButtonUrl": "",
+    "createdAt": 1631878704213
+  },
+  {
+    "id": "rkvq1bMXt",
+    "projectTitle": "Natours",
+    "thumbnailUrl": "/assets/thumbnails/Natours.png",
+    "description": "Wonderful landing page!",
+    "skillTags": ["Html5", "CssThree", "Web-App"],
+    "leftButtonTitle": "View Online",
+    "leftButtonUrl": "https://natours.netlify.app/",
+    "rightButtonTitle": "View Codes",
+    "rightButtonUrl": "https://github.com/emremutlu08/css-main",
+    "createdAt": 1631879054936
+  },
+  {
+    "id": "HyvT1-z7F",
+    "projectTitle": "Nexter",
+    "thumbnailUrl": "/assets/thumbnails/Nexter.png",
+    "description": "Wonderful landing page!",
+    "skillTags": ["Html5", "CssThree", "Web-App"],
+    "leftButtonTitle": "View Online",
+    "leftButtonUrl": "https://nexter.netlify.app/",
+    "rightButtonTitle": "View Codes",
+    "rightButtonUrl": "https://github.com/emremutlu08/css-main",
+    "createdAt": 1631879102882
+  },
+  {
+    "id": "Sk7xgZMXt",
+    "projectTitle": "Trillo",
+    "thumbnailUrl": "/assets/thumbnails/Trillo.png",
+    "description": "Wonderful Landing Page!",
+    "skillTags": ["Html5", "CssThree", "Web-App"],
+    "leftButtonTitle": "View Online",
+    "leftButtonUrl": "https://trillo.netlify.app/",
+    "rightButtonTitle": "View Codes",
+    "rightButtonUrl": "https://github.com/emremutlu08/css-main",
+    "createdAt": 1631879147401
+  },
+  {
+    "id": "H1L7x-zmY",
+    "projectTitle": "Omnifood",
+    "thumbnailUrl": "/assets/thumbnails/Omnifood.png",
+    "description": "Wonderful Landing Page!",
+    "skillTags": ["Html5", "CssThree", "Web-App"],
+    "leftButtonTitle": "View Online",
+    "leftButtonUrl": "https://iwonawo.github.io/Omnifood/",
+    "rightButtonTitle": "View Codes",
+    "rightButtonUrl": "https://github.com/emremutlu08/css-main",
+    "createdAt": 1631879197993
+  },
+  {
+    "id": "rymFl-f7F",
+    "projectTitle": "Pixabay",
+    "thumbnailUrl": "/assets/thumbnails/Pixabay.png",
+    "description": "Grid system & pagination exercise!",
+    "skillTags": ["ReactJs", "CssThree", "Html5", "Web-App", "Responsive"],
     "leftButtonTitle": "View Online",
     "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
     "rightButtonTitle": "View Codes",
     "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631038460259
+    "createdAt": 1631879290829
   },
   {
-    "id": "H1dyTXSGF",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "xyz",
-    "skillTags": [
-      "OneThousandOneTracklists"
-    ],
+    "id": "SkGTlWMmK",
+    "projectTitle": "Lawyer Ahmet Coskun",
+    "thumbnailUrl": "/assets/thumbnails/LawyerAhmetCoskun.png",
+    "description": "Great landing page!",
+    "skillTags": ["Html5", "CssThree", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://www.ahmetcoskun.av.tr/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631038688433
+    "rightButtonUrl": "https://github.com/emremutlu08/lawyerAhmetCoskun",
+    "createdAt": 1631879354173
   },
   {
-    "id": "S1Nd6QSGY",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "kkk",
-    "skillTags": [
-      "Adblock"
-    ],
+    "id": "BkJBW-zXY",
+    "projectTitle": "Dev Connector",
+    "thumbnailUrl": "/assets/thumbnails/DevConnector.png",
+    "description": "To learn Mern Stack, I built a social media app for Developers!",
+    "skillTags": ["Mongodb", "Express", "ReactJs", "Nodedotjs", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://dsnfs.herokuapp.com/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631038827992
+    "rightButtonUrl": "https://github.com/emremutlu08/DEVCONNECTOR-master",
+    "createdAt": 1631879478674
   },
   {
-    "id": "SkIlJVrGK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "abc",
-    "skillTags": [
-      "E"
-    ],
+    "id": "Sk0YWZGQK",
+    "projectTitle": "HTML 5 Games",
+    "thumbnailUrl": "/assets/thumbnails/HTML5Games.png",
+    "description": "HTML 5 Games, download and play :)",
+    "skillTags": ["Html5", "CssThree", "Javascript", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631039213764
+    "rightButtonUrl": "https://github.com/emremutlu08/HTML5-main",
+    "createdAt": 1631879557964
   },
   {
-    "id": "BJMLDNSfK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "acd",
-    "skillTags": [
-      "E"
-    ],
-    "leftButtonTitle": "xyz",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
-    "rightButtonTitle": "ggg",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631041353696
-  },
-  {
-    "id": "B1lnPVHMY",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "xyz",
-    "skillTags": [
-      "FortyTwo"
-    ],
+    "id": "SyS1zbz7F",
+    "projectTitle": "Bankist",
+    "thumbnailUrl": "/assets/thumbnails/Bankist.png",
+    "description": "To learn Advanced Dom and Events",
+    "skillTags": ["Javascript", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://bankist-dom.netlify.app/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631041447856
+    "rightButtonUrl": "https://github.com/emremutlu08/complete-javascript-course-master-main",
+    "createdAt": 1631879645094
   },
   {
-    "id": "rkg4KNHMK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "fgd",
-    "skillTags": [
-      "Nuget"
-    ],
+    "id": "B1XGMZMmY",
+    "projectTitle": "Mapty",
+    "thumbnailUrl": "/assets/thumbnails/Mapty.png",
+    "description": "To learn OOP, Geolocation & Project planning",
+    "skillTags": ["Javascript", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://mapty.netlify.app/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631041831667
+    "rightButtonUrl": "https://github.com/emremutlu08/complete-javascript-course-master-main",
+    "createdAt": 1631879690979
   },
   {
-    "id": "SyvfESBGK",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "dfe",
-    "skillTags": [
-      "FortyTwo"
-    ],
+    "id": "SyqSzbfmF",
+    "projectTitle": "Forkify",
+    "thumbnailUrl": "/assets/thumbnails/Forkify.png",
+    "description": "To learn Javascript well",
+    "skillTags": ["Javascript", "Web-App"],
     "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
+    "leftButtonUrl": "https://forkify-v2.netlify.app/",
     "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631044623120
-  },
-  {
-    "id": "ryK34Brft",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "gfhfg",
-    "skillTags": [
-      "ThreeM"
-    ],
-    "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
-    "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631044784766
-  },
-  {
-    "id": "B1NwSSHfF",
-    "projectTitle": "Pixabay",
-    "thumbnailUrl": "https://nimbusweb.me/box/attachment/6004426/bxrsziebvfwfdkl3uhhl/edtCNbDswRny5a4g/screenshot-pixabay-coding-exercise.vercel.app-2021.09.04-21_15_18.png",
-    "description": "ghjkgh",
-    "skillTags": [
-      "OnePassword"
-    ],
-    "leftButtonTitle": "View Online",
-    "leftButtonUrl": "https://pixabay-coding-exercise.vercel.app/",
-    "rightButtonTitle": "View Codes",
-    "rightButtonUrl": "https://github.com/emremutlu08/pixabay-coding-exercise",
-    "createdAt": 1631044955892
+    "rightButtonUrl": "https://github.com/emremutlu08/complete-javascript-course-master-main",
+    "createdAt": 1631879746173
   }
 ]

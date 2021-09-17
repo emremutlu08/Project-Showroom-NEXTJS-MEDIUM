@@ -133,8 +133,6 @@ export default function AddProjectForm() {
         draggable
         pauseOnHover
       />
-      <input type="email" name="email" style={{ display: 'none' }} />
-      <input type="password" name="password" style={{ display: 'none' }} />
       <Typography gutterBottom variant="h4" component="h4" color="textPrimary">
         Add Project
       </Typography>

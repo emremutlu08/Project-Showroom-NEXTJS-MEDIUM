@@ -28,7 +28,9 @@ export default function HeroButtons({
       </Grid>
       <Grid item>
         <LinkNext href={detailsPage} passHref>
-          <Button variant="outlined">View {secondButtonText}</Button>
+          <Button variant="outlined" disabled>
+            View {secondButtonText}
+          </Button>
         </LinkNext>
       </Grid>
     </Grid>

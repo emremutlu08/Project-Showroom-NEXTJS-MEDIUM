@@ -6,15 +6,13 @@ import Box from '@material-ui/core/Box';
 // STYLES
 import { makeStyles } from '@material-ui/core/styles';
 
-/* COMPONENTS */
-import FormInputText from '../../src/components/formComponents/FormInputText';
-
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
   main: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
   },
   fillRest: {
     height: '25vw',
@@ -27,7 +25,7 @@ export default function CardGalleryItems() {
 
   return (
     <Box className={classes.main}>
-      <FormInputText />
+      Not ready!
       <div className={classes.fillRest} />
     </Box>
   );

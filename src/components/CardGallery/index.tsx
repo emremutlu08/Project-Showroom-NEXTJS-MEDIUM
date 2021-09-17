@@ -1,3 +1,6 @@
+/* REACT */
+import { useContext } from 'react';
+
 /* MATERIAL UI */
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -7,6 +10,9 @@ import { Divider } from '@material-ui/core';
 import FilterButtons from './FilterButtons';
 import PaginationOutlined from './PaginationOutlined';
 import CardGalleryItems from './CardGalleryItems';
+
+/* CONTEXTS */
+import { GeneratedContext } from '../Contexts';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -37,32 +43,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6];
-
-export function getStaticProps() {
-  return {
-    props: {
-      posts: ['a', 'b'],
-    },
-  };
-}
-
-export default function CardGallery(props: any) {
+export default function CardGallery() {
+  const props = useContext(GeneratedContext);
   const classes = useStyles();
-
-  console.log(props, 'CardGallery (index.tsx:53)'); // Will log props passed in `getStaticProps`
-
+  // if (projects.loading) return <div>Loading...</div>;
+  if (props!.projects.success) console.log(props!.projects.data);
+  const cards = props!.projects.data;
+  const isShowFilters = process.env.NEXT_PUBLIC_IS_FILTERS_ACTIVE;
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      <FilterButtons />
-      <Divider variant="middle" light className={classes.topSpace} />
-      <div className={classes.allSpace} />
-      {/* End hero unit */}
-      <PaginationOutlined />
-      <div className={classes.allSpace} />
-      <CardGalleryItems cards={cards} />
-      <div className={classes.allSpace} />
-      <PaginationOutlined />
+      <>
+        {isShowFilters === 'true' && (
+          <>
+            <FilterButtons />
+            <Divider variant="middle" light className={classes.topSpace} />
+            <div className={classes.allSpace} />
+          </>
+        )}
+
+        {/* End hero unit */}
+        <PaginationOutlined length={cards.length} />
+        <div className={classes.allSpace} />
+        <CardGalleryItems cards={cards} />
+        <div className={classes.allSpace} />
+        <PaginationOutlined length={cards.length} />
+      </>
     </Container>
   );
 }
