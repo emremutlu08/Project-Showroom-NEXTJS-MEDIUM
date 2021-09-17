@@ -1,45 +1,16 @@
 /* COMPONENTS */
 const { DataStore } = require('notarealdb');
-const paths = require('path');
-const fs = require('fs');
+const path = require('path');
 
 /* NEXTJS */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const pathOne = paths.join(__dirname);
-const pathTwo = paths.join(__dirname, '..');
-const pathThree = paths.join(__dirname, '..', '..');
-const pathFour = paths.join(__dirname, '..', '..', '..');
-const basePath = paths.join(__dirname, '..', '..', '..', '..');
-const pathFive = paths.join(__dirname, '..', '..', '..', '..', '..');
-const localDbPath = paths.join(basePath, 'src', 'localDb');
+const basePath = path.join('./', 'src');
+const localDbPath = path.join(basePath, 'localDb');
 
-fs.readdirSync(pathOne).forEach((file: any) => {
-  console.log(file, '=> pathOne:18');
-});
-
-fs.readdirSync(pathTwo).forEach((file: any) => {
-  console.log(file, '=> pathTwo:22');
-});
-
-fs.readdirSync(pathThree).forEach((file: any) => {
-  console.log(file, '=> pathThree:26');
-});
-
-fs.readdirSync(pathFour).forEach((file: any) => {
-  console.log(file, '=> pathFour:30');
-});
-
-fs.readdirSync(basePath).forEach((file: any) => {
-  console.log(file, '=> basePath:34');
-});
-
-fs.readdirSync(pathFive).forEach((file: any) => {
-  console.log(file, '=> pathFive:39');
-});
-
-console.log(localDbPath, ':42');
+const path1 = path.resolve(localDbPath);
+console.log(path1, ':13');
 const store = new DataStore(localDbPath);
 const projects = store.collection('projects');
 
@@ -52,7 +23,7 @@ import {
   PROJECT_ADDED_ERROR,
   WRONG_METHOD,
   FILL_AREAS,
-} from './../../../lib/api/projects/messages';
+} from '../../../../lib/api/projects/messages';
 
 /* MAIN FUNCTION */
 export default async function handler(

@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
 /* COMPONENTS */
-import AddProjectForm from '../../src/components/add-project/AddProjectForm';
+import AddProjectForm from '../../components/add-project/AddProjectForm';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({

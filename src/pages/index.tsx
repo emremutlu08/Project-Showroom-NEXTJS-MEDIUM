@@ -1,10 +1,10 @@
 /* COMPONENTS */
-import Main from '../src/components/Main';
-import api from '../lib/api/api';
+import Main from '../components/Main';
+import api from '../../lib/api/api';
 import { GetServerSideProps } from 'next';
 
 /* CONTEXTS */
-import { GeneratedContext } from '../src/components/Contexts';
+import { GeneratedContext } from '../components/Contexts';
 
 export default function IndexPage(props: any) {
   return (
