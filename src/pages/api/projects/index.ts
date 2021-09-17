@@ -7,8 +7,8 @@ const fs = require('fs');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const base = path.join(__dirname);
-const localDbPath = path.join('./', 'localDb');
+const base = path.join('./public');
+const localDbPath = path.join(base, 'localDb');
 
 const path1 = path.resolve(base);
 console.log(path1, ':13');
