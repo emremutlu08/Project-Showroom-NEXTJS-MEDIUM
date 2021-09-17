@@ -6,7 +6,7 @@ const path = require('path');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const localDbPath = path.join('./');
+const localDbPath = path.join('./', 'localDb');
 
 const path1 = path.resolve(localDbPath);
 console.log(path1, ':13');
