@@ -1,21 +1,20 @@
 /* COMPONENTS */
 const { DataStore } = require('notarealdb');
 const paths = require('path');
+const fs = require('fs');
 
 /* NEXTJS */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const localDbPath = paths.join(
-  __dirname,
-  '..',
-  '..',
-  '..',
-  '..',
-  'src',
-  'localDb',
-);
-console.log(localDbPath, ':10');
+const basePath = paths.join(__dirname, '..', '..', '..', '..');
+const localDbPath = paths.join(basePath, 'src', 'localDb');
+
+fs.readdirSync(basePath).forEach((file: any) => {
+  console.log(file, ':14');
+});
+
+console.log(localDbPath, ':17');
 const store = new DataStore(localDbPath);
 const projects = store.collection('projects');
 

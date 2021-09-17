@@ -46,8 +46,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CardGallery() {
   const props = useContext(GeneratedContext);
   const classes = useStyles();
-  console.log(props!.projects.loading, ':49');
-  console.log(props!.projects.data, ':50');
   if (props!.projects.loading) {
     return <div>Loading...</div>;
   }
