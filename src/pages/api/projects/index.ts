@@ -7,7 +7,7 @@ const fs = require('fs');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
-const base = path.join('./');
+const base = path.join(__dirname);
 const localDbPath = path.join('./', 'localDb');
 
 const path1 = path.resolve(localDbPath);
