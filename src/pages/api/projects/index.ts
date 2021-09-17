@@ -12,15 +12,14 @@ const localDbPath = path.join('./', 'localDb');
 
 const path1 = path.resolve(localDbPath);
 console.log(path1, ':13');
-const store = new DataStore(localDbPath);
-const projects = store.collection('projects');
-
 fs.readdirSync(base).forEach((file: any) => {
-  console.log(file, '=>base:19');
+  console.log(file, '=>base:16');
 });
 fs.readdirSync(localDbPath).forEach((file: any) => {
-  console.log(file, '=>localDbPath:22');
+  console.log(file, '=>localDbPath:19');
 });
+const store = new DataStore(localDbPath);
+const projects = store.collection('projects');
 
 /* MESSAGES */
 import {
