@@ -60,7 +60,7 @@ function Copyright() {
         >
           Emre MUTLU
         </Link>
-        , is of course highly appreciated!
+        , is of course highly appreciated!!
       </div>
       {new Date().getFullYear()}
     </Typography>
