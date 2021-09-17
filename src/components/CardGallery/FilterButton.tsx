@@ -36,7 +36,7 @@ export default function FilterButtons(props: {
   const onClickHandler = () => {
     setSelectedTag(!selectedTag);
   };
-  const { selectAll } = useContext(FilterButtonsContext);
+  const { selectAll }: any = useContext(FilterButtonsContext);
 
   useEffect(() => {
     setSelectedTag(selectAll);

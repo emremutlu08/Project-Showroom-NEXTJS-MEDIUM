@@ -46,9 +46,11 @@ const useStyles = makeStyles((theme) => ({
 export default function CardGallery() {
   const props = useContext(GeneratedContext);
   const classes = useStyles();
-  // if (projects.loading) return <div>Loading...</div>;
-  if (props!.projects.success) console.log(props!.projects.data);
+  if (props!.projects.loading) {
+    return <div>Loading...</div>;
+  }
   const cards = props!.projects.data;
+  console.log(cards, ':56');
   const isShowFilters = process.env.NEXT_PUBLIC_IS_FILTERS_ACTIVE;
   return (
     <Container className={classes.cardGrid} maxWidth="md">

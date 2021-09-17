@@ -64,7 +64,6 @@ export default async function handler(
       rightButtonUrl,
     }),
   );
-  console.log(filteredBody, ':53');
   body = filteredBody[0];
 
   switch (method) {

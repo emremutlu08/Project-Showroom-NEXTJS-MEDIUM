@@ -35,14 +35,14 @@ export default function AppBarMenu(props: {
           url={firstItem.url}
           text={firstItem.text}
           ListIcon={InboxIcon}
-          closeMenu={closeMenu}
+          onClick={closeMenu}
         />
         <Divider variant="middle" />
         <ListItemIconButton
           url={secondItem.url}
           text={secondItem.text}
           ListIcon={InboxIcon}
-          closeMenu={closeMenu}
+          onClick={closeMenu}
           disabled={true}
         />
         <Divider />

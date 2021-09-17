@@ -96,11 +96,7 @@ export default function AddProjectForm() {
     setPasswordCorrect(!isPwCorrect);
     if (data.projectTitle && data.thumbnailUrl && isPwCorrect) {
       // send data to db
-      console.log(projectValues);
       const response = await api.post('/projects', projectValues);
-      console.log(response, ':92');
-      console.log(response.data.loading, ':93');
-      console.log(response.data.success, ':94');
       if (response.data.success) {
         reset({
           projectTitle: '',

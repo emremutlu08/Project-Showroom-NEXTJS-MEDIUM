@@ -6,9 +6,10 @@ export const AllIcons = Object.keys(Icons);
 /* MAIN COMPONENT */
 export default function index(props: { iconName: string; className: string }) {
   const { iconName, className } = props;
+  const IconList: any = Icons;
   // Icons
   const isIconExist = AllIcons.includes(iconName);
-  const TagName = isIconExist && Icons[iconName];
+  const TagName = isIconExist && IconList[iconName];
 
   return (
     <>
