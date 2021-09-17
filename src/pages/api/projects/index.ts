@@ -16,16 +16,7 @@ const m3 = path.join('./', '..', '..', '..');
 const m4 = path.join('./', '..', '..', '..', '..');
 const m5 = path.join('./', '..', '..', '..', '..', '..');
 
-const path1 = path.resolve(base);
-console.log(path1, ':13');
-fs.readdirSync(base).forEach((file: any) => {
-  console.log(file, '=>base:16');
-});
-fs.readdirSync(localDbPath).forEach((file: any) => {
-  console.log(file, '=>localDbPath:19');
-});
-
-/* */
+const path1 = path.resolve(base); /* */
 fs.readdirSync(m1).forEach((file: any) => {
   console.log(file, '=>m1:16');
 });
@@ -40,6 +31,13 @@ fs.readdirSync(m4).forEach((file: any) => {
 });
 fs.readdirSync(m5).forEach((file: any) => {
   console.log(file, '=>m5:16');
+});
+console.log(path1, ':13');
+fs.readdirSync(base).forEach((file: any) => {
+  console.log(file, '=>base:16');
+});
+fs.readdirSync(localDbPath).forEach((file: any) => {
+  console.log(file, '=>localDbPath:19');
 });
 
 const store = new DataStore(localDbPath);
