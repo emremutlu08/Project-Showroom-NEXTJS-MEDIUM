@@ -1,7 +1,7 @@
 /* COMPONENTS */
 import Main from '../src/components/Main';
 import api from '../lib/api/api';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 
 /* CONTEXTS */
 import { GeneratedContext } from '../src/components/Contexts';
@@ -38,7 +38,7 @@ IndexPage.defaultProps = {
   notActualProjects,
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const projects = await api.get('projects');
   let allProjects = projects.data;
   if (!!!allProjects) allProjects = notActualProjects;

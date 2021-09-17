@@ -50,7 +50,6 @@ export default function CardGallery() {
     return <div>Loading...</div>;
   }
   const cards = props!.projects.data;
-  console.log(cards, ':56');
   const isShowFilters = process.env.NEXT_PUBLIC_IS_FILTERS_ACTIVE;
   return (
     <Container className={classes.cardGrid} maxWidth="md">
