@@ -7,14 +7,34 @@ const fs = require('fs');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 /* DATABASE */
+const pathOne = paths.join(__dirname);
+const pathTwo = paths.join(__dirname, '..');
+const pathThree = paths.join(__dirname, '..', '..');
+const pathFour = paths.join(__dirname, '..', '..', '..');
 const basePath = paths.join(__dirname, '..', '..', '..', '..');
 const localDbPath = paths.join(basePath, 'src', 'localDb');
 
-fs.readdirSync(basePath).forEach((file: any) => {
-  console.log(file, ':14');
+fs.readdirSync(pathOne).forEach((file: any) => {
+  console.log(file, '=> pathOne:18');
 });
 
-console.log(localDbPath, ':17');
+fs.readdirSync(pathTwo).forEach((file: any) => {
+  console.log(file, '=> pathTwo:22');
+});
+
+fs.readdirSync(pathThree).forEach((file: any) => {
+  console.log(file, '=> pathThree:26');
+});
+
+fs.readdirSync(pathFour).forEach((file: any) => {
+  console.log(file, '=> pathFour:30');
+});
+
+fs.readdirSync(basePath).forEach((file: any) => {
+  console.log(file, '=> basePath:34');
+});
+
+console.log(localDbPath, ':37');
 const store = new DataStore(localDbPath);
 const projects = store.collection('projects');
 
