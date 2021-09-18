@@ -36,8 +36,7 @@ export default function PaginationOutlined({
   // Router
   const router = useRouter();
   const page = GetCurrentPage();
-  const pageLength = Math.round(length / ITEMS_PER_PAGE);
-
+  const pageLength = Math.ceil(length / ITEMS_PER_PAGE);
   // Styles
   const classes = useStyles();
 
