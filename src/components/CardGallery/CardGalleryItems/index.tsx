@@ -17,7 +17,6 @@ export interface CardGalleryItemsProps {
 export default function CardGalleryItems({ cards }: CardGalleryItemsProps) {
   let currentPage = GetCurrentPage();
   let pagedCards = PaginateFunc(cards, ITEMS_PER_PAGE, currentPage);
-  console.log(pagedCards);
 
   return (
     <Grid container spacing={4}>
