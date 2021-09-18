@@ -8,9 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-/* COMPONENTS */
-import UrlHomepage from './General/UrlHomepage';
-
 const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(6),
@@ -25,17 +22,6 @@ const useStyles = makeStyles((theme) => ({
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      <div>
-        Built by{' '}
-        <Link
-          href="https://www.linkedin.com/in/emremutlu8/"
-          target="_blank"
-          color="inherit"
-        >
-          Emre MUTLU
-        </Link>{' '}
-        for his usage.
-      </div>{' '}
       <div>
         Copyright © by{' '}
         <Link
@@ -80,7 +66,7 @@ export default function Footer() {
           gutterBottom
         >
           {' '}
-          <LinkNext href={UrlHomepage('/emremutlu')} passHref>
+          <LinkNext href="https://www.linkedin.com/in/emremutlu8/" passHref>
             <Link>PROJECT GALLERY | By Emre MUTLU</Link>
           </LinkNext>
         </Typography>
