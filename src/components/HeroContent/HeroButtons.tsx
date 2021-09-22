@@ -15,7 +15,7 @@ export default function HeroButtons({
   secondButtonText = 'Details about me',
 }: HeroTextProps) {
   const galleryPage = '/';
-  const detailsPage = '/details';
+  const detailsPage = '/assets/others/Emre-Mutlu-Cv-ReactDev.pdf';
 
   return (
     <Grid container spacing={2} justifyContent="center">
@@ -28,9 +28,13 @@ export default function HeroButtons({
       </Grid>
       <Grid item>
         <LinkNext href={detailsPage} passHref>
-          <Button variant="outlined" disabled>
-            View {secondButtonText}
-          </Button>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            <Button variant="outlined">View {secondButtonText}</Button>
+          </a>
         </LinkNext>
       </Grid>
     </Grid>

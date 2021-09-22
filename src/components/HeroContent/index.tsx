@@ -28,7 +28,7 @@ export default function HeroContent() {
         <div className={classes.topSpace} />
         <HeroButtons
           firstButtonText={'My projects'}
-          secondButtonText={'Details about me'}
+          secondButtonText={'My Cv (PDF)'}
         />
         <Divider className={classes.topSpace} />
       </Container>
