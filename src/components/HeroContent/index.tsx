@@ -24,7 +24,7 @@ export default function HeroContent() {
     <div className={classes.heroContent}>
       <Container maxWidth="md">
         <HeroName fullname={'EMRE MUTLU'} />
-        <HeroDetails details={'I am a Web App developer.'} />
+        <HeroDetails details={'I am a frontend web developer.'} />
         <div className={classes.topSpace} />
         <HeroButtons
           firstButtonText={'My projects'}
