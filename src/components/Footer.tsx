@@ -40,7 +40,7 @@ function Copyright() {
       <div>
         A credit to the original author,{' '}
         <Link
-          href="https://www.linkedin.com/in/emremutlu8/"
+          href="https://project-showroom.vercel.app/"
           target="_blank"
           color="inherit"
         >
@@ -66,23 +66,9 @@ export default function Footer() {
           gutterBottom
         >
           {' '}
-          <LinkNext href="https://www.linkedin.com/in/emremutlu8/" passHref>
+          <LinkNext href="https://project-showroom.vercel.app/" passHref>
             <Link>PROJECT GALLERY | By Emre MUTLU</Link>
           </LinkNext>
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          <Link
-            href="https://www.linkedin.com/in/emremutlu8/"
-            target="_blank"
-            color="inherit"
-          >
-            I can build your dream apps with Next.JS
-          </Link>
         </Typography>
         <div className={classes.gap} />
         <Typography
