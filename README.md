@@ -1,7 +1,7 @@
-# Next.js with TypeScript example
+# Example Project
 
-[PROJECT ADDRESS](https://project-showroom.vercel.app/)
+[Project Showroom | Emre MUTLU](https://project-showroom.vercel.app/)
 
-## The idea behind the example
+## How to use?
 
-[Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.
+You need to change ".env.example" filename to ".env" filename and modify the values in that file for your use case
