@@ -19,6 +19,7 @@ import { FilterButtonsContext } from './FilterButtonsContext';
 
 /* CONTEXTS */
 import { GeneratedContext } from '../Contexts';
+import PropTypes from 'prop-types';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +56,7 @@ export default function FilterButtons() {
   const props = useContext(GeneratedContext);
   const classes = useStyles();
   const [selectAll, setSelectAll] = useState(true);
-  const projectList = props?.projects.data;
+  const projectList = props?.projects?.data;
   const count: any = {};
   projectList?.map((project) => {
     const { skillTags }: any = project;
@@ -112,3 +113,7 @@ export default function FilterButtons() {
     </FilterButtonsContext.Provider>
   );
 }
+
+FilterButtons.propTypes = {
+  projects: PropTypes.object,
+};

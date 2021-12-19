@@ -14,13 +14,7 @@ import { lightTheme, darkTheme } from '../src/components/ui/Theme';
 import Footer from '../src/components/Footer';
 import AppBarComponent from '../src/components/AppBarComponent';
 
-/* PROPS INTERFACE */
-export interface MyAppProps<P extends object = {}> {
-  Component: React.ComponentType;
-  pageProps: P;
-}
-
-function MyApp({ Component, pageProps }: MyAppProps) {
+function MyApp({ Component, pageProps }: any) {
   // Theme
   const [darkMode, setDarkMode] = useState(false);
   const theme = darkMode ? darkTheme : lightTheme;
