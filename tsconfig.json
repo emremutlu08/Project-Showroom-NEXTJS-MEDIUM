@@ -18,7 +18,8 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "checkJs": false
   },
   "exclude": ["node_modules"],
   "include": [
