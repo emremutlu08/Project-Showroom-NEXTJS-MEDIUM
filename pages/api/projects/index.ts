@@ -21,7 +21,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  let { method, body } = req;
+  const { method } = req;
+  let { body } = req;
   await dbConnect();
 
   if (method === 'POST') {

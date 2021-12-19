@@ -22,10 +22,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  let {
+  let { body } = req;
+  const {
     query: { id },
     method,
-    body,
   } = req;
   await dbConnect();
   const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;

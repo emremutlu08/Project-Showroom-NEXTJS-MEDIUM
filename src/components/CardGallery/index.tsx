@@ -13,6 +13,7 @@ import CardGalleryItems from './CardGalleryItems';
 
 /* CONTEXTS */
 import { GeneratedContext } from '../Contexts';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -46,10 +47,10 @@ const useStyles = makeStyles((theme) => ({
 export default function CardGallery() {
   const props = useContext(GeneratedContext);
   const classes = useStyles();
-  if (props!.projects.loading) {
+  if (props?.projects?.loading) {
     return <div>Loading...</div>;
   }
-  const cards = props!.projects.data;
+  const cards = props?.projects?.data ?? [];
   const isShowFilters = process.env.NEXT_PUBLIC_IS_FILTERS_ACTIVE;
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -72,3 +73,7 @@ export default function CardGallery() {
     </Container>
   );
 }
+
+CardGallery.propTypes = {
+  projects: PropTypes.object,
+};
