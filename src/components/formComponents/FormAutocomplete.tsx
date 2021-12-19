@@ -11,9 +11,9 @@ export default function FormAutocomplete(props: {
   defaultValue?: any;
   label?: any;
   helperText?: any;
-  tags: Array<string>;
+  tags: any;
   setTags: any;
-  options: Array<string>;
+  options: any;
 }) {
   const { formId, label = '', tags, setTags, options, helperText } = props;
 
