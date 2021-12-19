@@ -4,7 +4,7 @@ import React from 'react';
 interface ProjectsContextInterface {
   projects: {
     success: boolean;
-    data: Array<Object>;
+    data: Array<any>;
     message: string;
     loading: boolean;
   };

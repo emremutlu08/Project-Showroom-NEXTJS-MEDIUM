@@ -1,7 +1,7 @@
 export const ITEMS_PER_PAGE = 6;
 
 export default function PaginateFunc(
-  array: object[],
+  array: any,
   page_size: number = ITEMS_PER_PAGE,
   page_number: number,
 ) {
