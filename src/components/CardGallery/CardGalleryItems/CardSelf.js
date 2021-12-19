@@ -34,13 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/* PROPS INTERFACE */
-export interface CardGalleryItemsProps {
-  cards: number[];
-}
-
 /* MAIN FUNCTION */
-export default function CardSelf({ card }: any) {
+export default function CardSelf({ card }) {
   const classes = useStyles();
 
   return (

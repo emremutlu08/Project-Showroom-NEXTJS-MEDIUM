@@ -12,20 +12,20 @@ import Box from '@material-ui/core/Box';
 import Send from '@material-ui/icons/Send';
 
 // STYLES
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 /* COMPONENTS */
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import FormInputText from '../formComponents/FormInputText';
 import FormAutocomplete from '../formComponents/FormAutocomplete';
 import FormTextarea from '../formComponents/FormTextarea';
 import { AllIcons } from '../GetIcons';
-import api from './../../../lib/api/api';
+import api from '../../../lib/api/api';
 import { ToastContainer, toast } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
 
 /* CUSTOM STYLES */
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   form: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(2),
@@ -49,25 +49,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-/* INTERFACE */
-interface IFormInput {
-  projectTitle: string;
-  thumbnailUrl: string;
-  description: string;
-  firstName: string;
-  skillTags: string;
-  leftButtonTitle: string;
-  leftButtonUrl: string;
-  rightButtonTitle: string;
-  rightButtonUrl: string;
-  pw: string;
-}
-
 /* MAIN FUNCTION */
 export default function AddProjectForm() {
   const classes = useStyles();
-  const { control, handleSubmit, reset } = useForm<IFormInput>();
-  const notifySuccess = (message: string) =>
+  const { control, handleSubmit, reset } = useForm();
+  const notifySuccess = (message) =>
     toast.success(message, {
       position: 'bottom-right',
       autoClose: 3000,
@@ -76,7 +62,7 @@ export default function AddProjectForm() {
       pauseOnHover: true,
       draggable: true,
     });
-  const notifyError = (message: string) =>
+  const notifyError = (message) =>
     toast.error(message, {
       position: 'bottom-right',
       autoClose: 3000,
@@ -90,7 +76,7 @@ export default function AddProjectForm() {
   const [passwordCorrect, setPasswordCorrect] = useState(true);
   const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
 
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+  const onSubmit = async (data) => {
     const projectValues = { ...data, skillTags: tags };
     const isPwCorrect = FormSecretPassword === data.pw;
     setPasswordCorrect(!isPwCorrect);

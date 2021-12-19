@@ -14,7 +14,7 @@ import { lightTheme, darkTheme } from '../src/components/ui/Theme';
 import Footer from '../src/components/Footer';
 import AppBarComponent from '../src/components/AppBarComponent';
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps }) {
   // Theme
   const [darkMode, setDarkMode] = useState(false);
   const theme = darkMode ? darkTheme : lightTheme;

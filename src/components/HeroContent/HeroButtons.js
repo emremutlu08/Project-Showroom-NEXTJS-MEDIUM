@@ -5,15 +5,10 @@ import LinkNext from 'next/link';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-export interface HeroTextProps {
-  firstButtonText: any;
-  secondButtonText: any;
-}
-
 export default function HeroButtons({
   firstButtonText = 'My projects',
   secondButtonText = 'Details about me',
-}: HeroTextProps) {
+}) {
   const galleryPage = '/';
   const detailsPage = '/assets/others/Emre-Mutlu-Cv-ReactDev.pdf';
 

@@ -18,10 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function AppBarComponent(props: {
-  darkMode: boolean;
-  handleDarkMode: any;
-}) {
+export default function AppBarComponent(props) {
   const { darkMode, handleDarkMode } = props;
   const classes = useStyles();
   const [openMenu, setOpenMenu] = useState(false);

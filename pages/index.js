@@ -1,12 +1,11 @@
 /* COMPONENTS */
 import Main from '../src/components/Main';
 import api from '../lib/api/api';
-import { GetServerSideProps } from 'next';
 
 /* CONTEXTS */
 import { GeneratedContext } from '../src/components/Contexts';
 
-export default function IndexPage(props: any) {
+export default function IndexPage(props) {
   return (
     <GeneratedContext.Provider value={props}>
       <Main />
@@ -38,7 +37,7 @@ IndexPage.defaultProps = {
   notActualProjects,
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const projects = await api.get('projects');
   const allProjects = projects.data;
   // if (!!!allProjects) allProjects = notActualProjects;

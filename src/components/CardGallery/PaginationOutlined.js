@@ -25,14 +25,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-/* PROPS INTERFACE */
-export interface PaginationOutlinedProps {
-  length: number;
-}
-
-export default function PaginationOutlined({
-  length,
-}: PaginationOutlinedProps) {
+export default function PaginationOutlined({ length }) {
   // Router
   const router = useRouter();
   const page = GetCurrentPage();
@@ -40,7 +33,7 @@ export default function PaginationOutlined({
   // Styles
   const classes = useStyles();
 
-  const onPageChange = (_event: any, value: number) => {
+  const onPageChange = (_event, value) => {
     router.replace(`/?page=${value}`, '', { scroll: false });
   };
 

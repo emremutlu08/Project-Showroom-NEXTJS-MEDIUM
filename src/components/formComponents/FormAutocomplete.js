@@ -6,15 +6,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Chip from '@material-ui/core/Chip';
 
 /* MAIN FUNCTION */
-export default function FormAutocomplete(props: {
-  formId: any;
-  defaultValue?: any;
-  label?: any;
-  helperText?: any;
-  tags: any;
-  setTags: any;
-  options: any;
-}) {
+export default function FormAutocomplete(props) {
   const { formId, label = '', tags, setTags, options, helperText } = props;
 
   return (
@@ -28,7 +20,7 @@ export default function FormAutocomplete(props: {
         setTags([...newValue]);
       }}
       options={options}
-      getOptionLabel={(option: string) => option}
+      getOptionLabel={(option) => option}
       renderTags={(tagValue, getTagProps) =>
         tagValue.map((option, index) => (
           <Chip key={index} label={option} {...getTagProps({ index })} />

@@ -8,14 +8,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { Divider } from '@material-ui/core';
 
 /* COMPONENTS */
-import ListItemIconButton from './../General/ListItemIconButton';
-import UrlHomepage from './../General/UrlHomepage';
+import ListItemIconButton from '../General/ListItemIconButton';
+import UrlHomepage from '../General/UrlHomepage';
 
 /* MAIN FUNCTION */
-export default function AppBarMenu(props: {
-  setOpenMenu: any;
-  openMenu: boolean;
-}) {
+export default function AppBarMenu(props) {
   const { setOpenMenu, openMenu } = props;
   const closeMenu = () => setOpenMenu(false);
   const firstItem = {

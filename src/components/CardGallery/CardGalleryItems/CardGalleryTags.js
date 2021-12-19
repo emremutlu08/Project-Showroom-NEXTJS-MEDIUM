@@ -9,10 +9,10 @@ import { useTheme } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 /* MAIN FUNCTION */
-export default function CardGalleryTags({ tags }: any) {
+export default function CardGalleryTags({ tags }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const TagChips = tags.map((tag: string, i: number) => {
+  const TagChips = tags.map((tag, i) => {
     return (
       <Grid item key={`${i}${tag}`}>
         <Chip size={matches ? 'medium' : 'small'} label={tag} />
@@ -27,7 +27,7 @@ export default function CardGalleryTags({ tags }: any) {
       alignItems="center"
       spacing={1}
     >
-      {TagChips.map((chip: any) => chip)}
+      {TagChips.map((chip) => chip)}
     </Grid>
   );
 }

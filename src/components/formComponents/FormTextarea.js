@@ -8,12 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { Controller } from 'react-hook-form';
 
 /* MAIN FUNCTION */
-export default function FormInputText(props: {
-  formId: any;
-  control: any;
-  defaultValue?: any;
-  placeholder?: any;
-}) {
+export default function FormInputText(props) {
   const { formId, control, defaultValue = '', placeholder = '' } = props;
 
   return (
@@ -21,7 +16,7 @@ export default function FormInputText(props: {
       name={formId}
       control={control}
       defaultValue={defaultValue}
-      render={({ field }: any) => (
+      render={({ field }) => (
         <FormControl fullWidth>
           <TextareaAutosize
             {...field}

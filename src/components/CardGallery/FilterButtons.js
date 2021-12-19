@@ -57,11 +57,11 @@ export default function FilterButtons() {
   const classes = useStyles();
   const [selectAll, setSelectAll] = useState(true);
   const projectList = props?.projects?.data;
-  const count: any = {};
+  const count = {};
   projectList?.map((project) => {
-    const { skillTags }: any = project;
+    const { skillTags } = project;
     skillTags.sort();
-    skillTags.forEach((i: string) => {
+    skillTags.forEach((i) => {
       count[i] = (count[i] || 0) + 1;
     });
   });

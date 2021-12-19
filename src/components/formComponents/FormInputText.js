@@ -8,18 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { Controller } from 'react-hook-form';
 
 /* MAIN FUNCTION */
-export default function FormInputText(props: {
-  formId: any;
-  control: any;
-  defaultValue?: any;
-  helperText?: any;
-  label?: any;
-  required?: boolean;
-  fullWidth?: boolean;
-  variant?: string;
-  error?: boolean;
-  type?: string;
-}) {
+export default function FormInputText(props) {
   const {
     formId,
     control,
@@ -38,7 +27,7 @@ export default function FormInputText(props: {
       name={formId}
       control={control}
       defaultValue={defaultValue}
-      render={({ field }: any) => (
+      render={({ field }) => (
         <FormControl fullWidth={fullWidth}>
           <TextField
             {...field}

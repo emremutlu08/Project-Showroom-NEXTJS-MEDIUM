@@ -13,7 +13,7 @@ import { useTheme } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 /* COMPONENTS */
-import GetIcons from './../GetIcons';
+import GetIcons from '../GetIcons';
 import { FilterButtonsContext } from './FilterButtonsContext';
 
 /* CUSTOM STYLES */
@@ -24,10 +24,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* MAIN FUNCTION */
-export default function FilterButtons(props: {
-  label: string;
-  iconName: string;
-}) {
+export default function FilterButtons(props) {
   const { label, iconName } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -36,7 +33,7 @@ export default function FilterButtons(props: {
   const onClickHandler = () => {
     setSelectedTag(!selectedTag);
   };
-  const { selectAll }: any = useContext(FilterButtonsContext);
+  const { selectAll } = useContext(FilterButtonsContext);
 
   useEffect(() => {
     setSelectedTag(selectAll);

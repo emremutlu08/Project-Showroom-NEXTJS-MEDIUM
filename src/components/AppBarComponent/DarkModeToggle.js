@@ -11,10 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function DarkModeToggle(props: {
-  darkMode: boolean;
-  handleDarkMode: any;
-}) {
+export default function DarkModeToggle(props) {
   const { darkMode, handleDarkMode } = props;
   const classes = useStyles();
   return (

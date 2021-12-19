@@ -21,7 +21,7 @@ export default function CardActionButtons({
   leftUrl = '',
   rightTitle = '',
   rightUrl = '',
-}: any) {
+}) {
   const classes = useStyles();
   return (
     <CardActions className={classes.actions}>

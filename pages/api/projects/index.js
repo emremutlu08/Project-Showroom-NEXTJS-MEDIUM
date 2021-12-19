@@ -2,9 +2,6 @@
 import dbConnect from '../../../lib/dbConnect';
 import Projects from '../../../models/Projects';
 
-/* NEXTJS */
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 /* MESSAGES */
 import {
   PROVIDE_PW,
@@ -17,10 +14,7 @@ import {
 } from '../../../lib/api/projects/messages';
 
 /* MAIN FUNCTION */
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req, res) {
   const { method } = req;
   let { body } = req;
   await dbConnect();
