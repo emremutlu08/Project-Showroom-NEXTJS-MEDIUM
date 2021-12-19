@@ -15,7 +15,7 @@ export default function CardGalleryItems({ cards }: any) {
 
   return (
     <Grid container spacing={4}>
-      {pagedCards.map((card, i: number) => {
+      {pagedCards.map((card: any, i: number) => {
         return (
           <Grid item key={`${card}${i}`} xs={12} sm={6} md={4}>
             <CardSelf card={card} />
