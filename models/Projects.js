@@ -2,30 +2,30 @@ import mongoose from 'mongoose';
 
 const ProjectSchema = new mongoose.Schema({
   projectTitle: {
-    type: any,
+    type: String,
     required: [true, 'Please provide a project title.'],
   },
   thumbnailUrl: {
-    type: any,
+    type: String,
   },
   description: {
-    type: any,
+    type: String,
   },
   skillTags: {
     type: Array,
   },
   leftButtonTitle: {
-    type: any,
+    type: String,
   },
   leftButtonUrl: {
-    type: any,
+    type: String,
   },
   rightButtonTitle: {
     required: [true, 'Please provide an image url for this pet.'],
-    type: any,
+    type: String,
   },
   rightButtonUrl: {
-    type: any,
+    type: String,
   },
 });
 
