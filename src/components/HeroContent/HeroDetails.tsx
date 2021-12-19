@@ -2,7 +2,7 @@
 import Typography from '@material-ui/core/Typography';
 
 export interface HeroDetailsProps {
-  details: String;
+  details: any;
 }
 
 export default function HeroDetails({ details }: HeroDetailsProps) {

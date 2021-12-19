@@ -11,8 +11,8 @@ import { Controller } from 'react-hook-form';
 export default function FormInputText(props: {
   formId: any;
   control: any;
-  defaultValue?: String;
-  placeholder?: String;
+  defaultValue?: any;
+  placeholder?: any;
 }) {
   const { formId, control, defaultValue = '', placeholder = '' } = props;
 

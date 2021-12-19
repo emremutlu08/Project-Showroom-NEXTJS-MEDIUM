@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 
 export default function AppBarComponent(props: {
   darkMode: boolean;
-  handleDarkMode: Function;
+  handleDarkMode: any;
 }) {
   const { darkMode, handleDarkMode } = props;
   const classes = useStyles();

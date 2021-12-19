@@ -11,7 +11,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 /* Main Component */
 export default function ListItemIconButton(props: {
   url?: URL;
-  text: String;
+  text: any;
   ListIcon: typeof MailIcon;
   disabled?: boolean;
   onClick?: any;

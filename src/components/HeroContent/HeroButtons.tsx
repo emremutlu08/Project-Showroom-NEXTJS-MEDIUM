@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 export interface HeroTextProps {
-  firstButtonText: String;
-  secondButtonText: String;
+  firstButtonText: any;
+  secondButtonText: any;
 }
 
 export default function HeroButtons({

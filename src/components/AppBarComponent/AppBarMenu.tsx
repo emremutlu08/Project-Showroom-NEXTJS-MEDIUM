@@ -13,7 +13,7 @@ import UrlHomepage from './../General/UrlHomepage';
 
 /* MAIN FUNCTION */
 export default function AppBarMenu(props: {
-  setOpenMenu: Function;
+  setOpenMenu: any;
   openMenu: boolean;
 }) {
   const { setOpenMenu, openMenu } = props;

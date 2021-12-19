@@ -8,9 +8,9 @@ import Chip from '@material-ui/core/Chip';
 /* MAIN FUNCTION */
 export default function FormAutocomplete(props: {
   formId: any;
-  defaultValue?: String;
-  label?: String;
-  helperText?: String;
+  defaultValue?: any;
+  label?: any;
+  helperText?: any;
   tags: Array<string>;
   setTags: any;
   options: Array<string>;

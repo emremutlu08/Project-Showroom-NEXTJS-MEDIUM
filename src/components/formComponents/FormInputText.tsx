@@ -11,9 +11,9 @@ import { Controller } from 'react-hook-form';
 export default function FormInputText(props: {
   formId: any;
   control: any;
-  defaultValue?: String;
-  helperText?: String;
-  label?: String;
+  defaultValue?: any;
+  helperText?: any;
+  label?: any;
   required?: boolean;
   fullWidth?: boolean;
   variant?: string;
