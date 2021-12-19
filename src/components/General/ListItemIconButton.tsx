@@ -18,7 +18,7 @@ export default function ListItemIconButton(props: {
 }) {
   const { url, text, ListIcon, onClick, disabled = false } = props;
 
-  if (!!url) {
+  if (url) {
     return (
       <LinkNext href={url} passHref>
         <ListItem button onClick={onClick} disabled={disabled}>

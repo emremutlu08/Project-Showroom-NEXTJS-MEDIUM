@@ -22,7 +22,7 @@ export default function DarkModeToggle(props: {
       <Brightness4Icon />
       <Switch
         checked={darkMode}
-        onChange={(_) => handleDarkMode()}
+        onChange={() => handleDarkMode()}
         name="checkedA"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       />

@@ -37,7 +37,7 @@ export default async function handler(
       });
     }
 
-    if (!!!body.projectTitle || !!!body.thumbnailUrl) {
+    if (!body.projectTitle || !body.thumbnailUrl) {
       return res.status(406).json({
         success: false,
         message: FILL_AREAS,

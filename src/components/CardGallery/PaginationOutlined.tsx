@@ -40,7 +40,7 @@ export default function PaginationOutlined({
   // Styles
   const classes = useStyles();
 
-  const onPageChange = ({}, value: number) => {
+  const onPageChange = (_event: any, value: number) => {
     router.replace(`/?page=${value}`, '', { scroll: false });
   };
 

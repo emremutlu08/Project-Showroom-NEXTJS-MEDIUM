@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
 
-const useStyles = makeStyles((_) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       position: 'fixed',

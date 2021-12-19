@@ -68,7 +68,7 @@ export default async function handler(
       try {
         const galleryItem = await Projects.findById(id);
 
-        if (!!!galleryItem) {
+        if (!galleryItem) {
           return res.status(400).json({
             success: false,
             message: ITEM_LISTED_ERROR,

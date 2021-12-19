@@ -6,6 +6,6 @@ export default function GetCurrentPage() {
   const router = useRouter();
   const query: any = router!.query;
   let currentPage = parseInt(query!.page);
-  if (!!!currentPage) currentPage = 1;
+  if (!currentPage) currentPage = 1;
   return currentPage;
 }

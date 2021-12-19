@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "axios": "^0.21.4",
+    "eslint-config-next": "^12.0.7",
     "material-react-toastify": "^1.0.1",
     "mongodb": "^4.1.2",
     "mongoose": "^6.0.6",
