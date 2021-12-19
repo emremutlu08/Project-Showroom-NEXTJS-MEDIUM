@@ -31,7 +31,7 @@ export default function FormAutocomplete(props: {
       getOptionLabel={(option: string) => option}
       renderTags={(tagValue, getTagProps) =>
         tagValue.map((option, index) => (
-          <Chip label={option} {...getTagProps({ index })} />
+          <Chip key={index} label={option} {...getTagProps({ index })} />
         ))
       }
       renderInput={(params) => (

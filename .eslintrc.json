@@ -1,26 +1,26 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react/recommended",
-      "plugin:prettier/recommended"
-    ],  "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true,
-          "tsx": true
-      },
-      "ecmaVersion": 12,
-      "sourceType": "module"
-  },
-    "plugins": [
-      "@typescript-eslint",
-      "react",
-      "prettier"
-    ],
-    "rules": {
-      "react/react-in-jsx-scope": "off"
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@next/next/recommended",
+    "eslint:recommended",
+    "next"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
     },
-    "globals": {
-      "React": "writable"
-    }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "globals": {
+    "React": "writable"
   }
+}
