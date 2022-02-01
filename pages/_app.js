@@ -13,8 +13,13 @@ import { makeStyles } from '@material-ui/core';
 import { lightTheme, darkTheme } from '../src/components/ui/Theme';
 import Footer from '../src/components/Footer';
 import AppBarComponent from '../src/components/AppBarComponent';
+import { SessionProvider } from 'next-auth/react';
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
+  const {
+    Component,
+    pageProps: { session, ...pageProps },
+  } = props;
   // Theme
   const [darkMode, setDarkMode] = useState(false);
   const theme = darkMode ? darkTheme : lightTheme;
@@ -45,7 +50,7 @@ function MyApp({ Component, pageProps }) {
   const handleDarkMode = () => setDarkMode(!darkMode);
 
   return (
-    <>
+    <SessionProvider session={session}>
       <Head>
         <title>Emre MUTLU - SHOWROOM</title>
       </Head>
@@ -60,7 +65,7 @@ function MyApp({ Component, pageProps }) {
           <Footer />
         </main>
       </ThemeProvider>
-    </>
+    </SessionProvider>
   );
 }
 

@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DarkModeToggle from './DarkModeToggle';
 import AppBarTitle from './AppBarTitle';
 import AppBarMenu from './AppBarMenu';
+import LoginRegisterButton from './LoginRegisterButton';
 
 const useStyles = makeStyles(() => ({
   toolbar: {
@@ -28,7 +29,7 @@ export default function AppBarComponent(props) {
       <Toolbar className={classes.toolbar}>
         <AppBarMenu setOpenMenu={setOpenMenu} openMenu={openMenu} />
         <AppBarTitle />
-
+        <LoginRegisterButton />
         <DarkModeToggle darkMode={darkMode} handleDarkMode={handleDarkMode} />
       </Toolbar>
     </AppBar>
