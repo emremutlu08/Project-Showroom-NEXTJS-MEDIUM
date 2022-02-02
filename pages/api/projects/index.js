@@ -4,7 +4,7 @@ import Projects from '../../../models/Projects';
 
 /* MESSAGES */
 import {
-  PROVIDE_PW,
+  // PROVIDE_PW,
   GALLERY_LISTED,
   GALLERY_LISTED_ERROR,
   PROJECT_ADDED,
@@ -20,16 +20,16 @@ export default async function handler(req, res) {
   await dbConnect();
 
   if (method === 'POST') {
-    const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
-    let { pw } = body;
-    pw = pw && pw.toString();
-    if (pw !== FormSecretPassword) {
-      return res.status(401).json({
-        success: false,
-        message: PROVIDE_PW,
-        loading: false,
-      });
-    }
+    // const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
+    // let { pw } = body;
+    // pw = pw && pw.toString();
+    // if (pw !== FormSecretPassword) {
+    //   return res.status(401).json({
+    //     success: false,
+    //     message: PROVIDE_PW,
+    //     loading: false,
+    //   });
+    // }
 
     if (!body.projectTitle || !body.thumbnailUrl) {
       return res.status(406).json({

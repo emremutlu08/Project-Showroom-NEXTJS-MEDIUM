@@ -23,6 +23,7 @@ import { AllIcons } from '../GetIcons';
 import api from '../../../lib/api/api';
 import { ToastContainer, toast } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
+import { useSession } from 'next-auth/react';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
 
 /* MAIN FUNCTION */
 export default function AddProjectForm() {
+  const { data, status } = useSession();
+  if (status !== 'authenticated') return null;
+  console.log(data, 'data');
   const classes = useStyles();
   const { control, handleSubmit, reset } = useForm();
   const notifySuccess = (message) =>
@@ -73,17 +77,19 @@ export default function AddProjectForm() {
     });
 
   const [tags, setTags] = useState([]);
-  const [passwordCorrect, setPasswordCorrect] = useState(true);
-  const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
+  // const [passwordCorrect, setPasswordCorrect] = useState(true);
+  // const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
 
   const onSubmit = async (data) => {
     const projectValues = { ...data, skillTags: tags };
-    const isPwCorrect = FormSecretPassword === data.pw;
-    setPasswordCorrect(!isPwCorrect);
-    if (data.projectTitle && data.thumbnailUrl && isPwCorrect) {
+    // const isPwCorrect = FormSecretPassword === data.pw;
+    // setPasswordCorrect(!isPwCorrect);
+    if (data.projectTitle && data.thumbnailUrl) {
+      // if (data.projectTitle && data.thumbnailUrl && isPwCorrect) {
       // send data to db
       const response = await api.post('/projects', projectValues);
-      if (response.data.success) {
+      console.log(response, 'response');
+      if (response?.data?.success) {
         reset({
           projectTitle: '',
           thumbnailUrl: '',
@@ -92,12 +98,13 @@ export default function AddProjectForm() {
           leftButtonUrl: '',
           rightButtonTitle: 'View Codes',
           rightButtonUrl: '',
-          pw: data.pw,
+          creatorEmail: data?.user?.email,
+          // pw: data.pw,
         });
         setTags([]);
-        notifySuccess(response.data.message);
+        notifySuccess(response?.data?.message);
       } else {
-        notifyError(response.data.message);
+        notifyError(response?.data?.message);
       }
     }
   };
@@ -182,7 +189,7 @@ export default function AddProjectForm() {
       <div className={classes.margin} />
 
       <Box className={classes.positionRight}>
-        <FormInputText
+        {/* <FormInputText
           formId="pw"
           control={control}
           helperText="You cannot use this form if you don't have the password!"
@@ -191,8 +198,8 @@ export default function AddProjectForm() {
           variant="outlined"
           required
           type="password"
-          error={passwordCorrect}
-        />
+          // error={passwordCorrect}
+        /> */}
         <div className={classes.margin} />
         <Button
           variant="contained"

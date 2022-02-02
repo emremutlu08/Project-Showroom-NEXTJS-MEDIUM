@@ -10,9 +10,12 @@ import { Divider } from '@material-ui/core';
 /* COMPONENTS */
 import ListItemIconButton from '../General/ListItemIconButton';
 import UrlHomepage from '../General/UrlHomepage';
+import { useSession } from 'next-auth/react';
 
 /* MAIN FUNCTION */
 export default function AppBarMenu(props) {
+  const { data, status } = useSession();
+
   const { setOpenMenu, openMenu } = props;
   const closeMenu = () => setOpenMenu(false);
   const firstItem = {
@@ -46,6 +49,9 @@ export default function AppBarMenu(props) {
       </>
     </List>
   );
+
+  if (status !== 'authenticated') return null;
+  console.log(data?.user?.email, 'data');
 
   return (
     <>

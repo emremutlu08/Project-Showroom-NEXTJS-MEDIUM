@@ -27,6 +27,9 @@ const ProjectSchema = new mongoose.Schema({
   rightButtonUrl: {
     type: String,
   },
+  creatorEmail: {
+    type: String,
+  },
 });
 
 export default mongoose.models.Project ||
