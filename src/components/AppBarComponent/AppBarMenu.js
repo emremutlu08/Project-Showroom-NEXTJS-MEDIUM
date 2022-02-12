@@ -26,7 +26,7 @@ export default function AppBarMenu(props) {
   const secondItem = {
     url: UrlHomepage('/my-details'),
     text: 'Manege Your Details',
-  };
+  }; // TODO: BURASI HAZIRLANACAK VE PROFİL OLUŞTURULACAK
 
   const LeftMenuList = () => (
     <List>
@@ -43,7 +43,6 @@ export default function AppBarMenu(props) {
           text={secondItem.text}
           ListIcon={InboxIcon}
           onClick={closeMenu}
-          disabled={true}
         />
         <Divider />
       </>
