@@ -21,9 +21,8 @@ import FormAutocomplete from '../formComponents/FormAutocomplete';
 import FormTextarea from '../formComponents/FormTextarea';
 import { AllIcons } from '../GetIcons';
 import api from '../../../lib/api/api';
-import { ToastContainer, toast } from 'material-react-toastify';
-import 'material-react-toastify/dist/ReactToastify.css';
 import { useSession } from 'next-auth/react';
+import { notifyError, notifySuccess } from '../toasts';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -57,24 +56,6 @@ export default function AddProjectForm() {
   console.log(data, 'data');
   const classes = useStyles();
   const { control, handleSubmit, reset } = useForm();
-  const notifySuccess = (message) =>
-    toast.success(message, {
-      position: 'bottom-right',
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-  const notifyError = (message) =>
-    toast.error(message, {
-      position: 'bottom-right',
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
 
   const [tags, setTags] = useState([]);
   // const [passwordCorrect, setPasswordCorrect] = useState(true);
@@ -111,17 +92,6 @@ export default function AddProjectForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <Typography gutterBottom variant="h4" component="h4" color="textPrimary">
         Add Project
       </Typography>
@@ -189,17 +159,6 @@ export default function AddProjectForm() {
       <div className={classes.margin} />
 
       <Box className={classes.positionRight}>
-        {/* <FormInputText
-          formId="pw"
-          control={control}
-          helperText="You cannot use this form if you don't have the password!"
-          label="Form Usage Password"
-          fullWidth={false}
-          variant="outlined"
-          required
-          type="password"
-          // error={passwordCorrect}
-        /> */}
         <div className={classes.margin} />
         <Button
           variant="contained"
