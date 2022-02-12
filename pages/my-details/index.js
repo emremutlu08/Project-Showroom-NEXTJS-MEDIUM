@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
 /* COMPONENTS */
-import AddProjectForm from '../../src/components/add-project/AddProjectForm';
+import MyDetailsForm from './../../src/components/my-details/MyDetailsForm';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -27,7 +27,7 @@ export default function MyDetailsPage() {
 
   return (
     <Box className={classes.main}>
-      <AddProjectForm />
+      <MyDetailsForm />
       <div className={classes.fillRest} />
     </Box>
   );
