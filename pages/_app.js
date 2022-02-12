@@ -14,6 +14,8 @@ import { lightTheme, darkTheme } from '../src/components/ui/Theme';
 import Footer from '../src/components/Footer';
 import AppBarComponent from '../src/components/AppBarComponent';
 import { SessionProvider } from 'next-auth/react';
+import { ToastContainer } from 'material-react-toastify';
+import 'material-react-toastify/dist/ReactToastify.css';
 
 function MyApp(props) {
   const {
@@ -65,6 +67,17 @@ function MyApp(props) {
           <Footer />
         </main>
       </ThemeProvider>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </SessionProvider>
   );
 }
