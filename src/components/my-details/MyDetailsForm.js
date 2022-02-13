@@ -50,30 +50,31 @@ const useStyles = makeStyles((theme) => ({
 
 /* MAIN FUNCTION */
 export default function MyDetailsForm() {
-  const { data, status } = useSession();
+  /**
+   * When a new user is created, the user is redirected to this page.
+   *
+   */
+  const { data, status } = useSession(); // TODO: useSession will be converted to useUser() in separate hook file
+
   if (status !== 'authenticated') return null;
   console.log(data, 'data');
   const classes = useStyles();
   const { control, handleSubmit, reset } = useForm();
 
   const [tags, setTags] = useState([]);
-  // const [passwordCorrect, setPasswordCorrect] = useState(true);
-  // const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
 
-  const onSubmit = async (data) => {
-    const projectValues = { ...data, skillTags: tags };
-    // const isPwCorrect = FormSecretPassword === data.pw;
-    // setPasswordCorrect(!isPwCorrect);
-    if (data.projectTitle && data.thumbnailUrl) {
-      // if (data.projectTitle && data.thumbnailUrl && isPwCorrect) {
+  const onSubmit = async (formData) => {
+    const projectValues = { ...formData, skillTags: tags };
+    if (formData.username) {
       // send data to db
       const response = await api.post('/projects', projectValues); // TODO: change to /my-details
       console.log(response, 'response');
       if (response?.data?.success) {
         reset({
           username: '',
+          userImageUrl: '',
           myDetails: '',
-          creatorEmail: data?.user?.email,
+          creatorEmail: formData?.user?.email,
         });
         setTags([]);
         notifySuccess(response?.data?.message);
@@ -93,6 +94,12 @@ export default function MyDetailsForm() {
         control={control}
         label="User Name"
         required
+      />
+      <div className={classes.margin} />
+      <FormInputText
+        formId="userImageUrl"
+        control={control}
+        label="Profile Image Url"
       />
       <div className={classes.margin} />
       <FormTextarea
