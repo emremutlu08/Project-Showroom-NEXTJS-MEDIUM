@@ -26,12 +26,25 @@ export default function CardActionButtons({
   return (
     <CardActions className={classes.actions}>
       {leftUrl && (
-        <Button size="small" color="primary" href={leftUrl} target="_blank">
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          href={leftUrl}
+          target="_blank"
+        >
           {leftTitle}
         </Button>
       )}
       {rightUrl && (
-        <Button size="small" color="primary" href={rightUrl} target="_blank">
+        <Button
+          // variant="outlined"
+          variant="contained"
+          size="small"
+          // color="secondary"
+          href={rightUrl}
+          target="_blank"
+        >
           {rightTitle}
         </Button>
       )}
