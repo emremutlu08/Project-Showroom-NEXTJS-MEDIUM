@@ -5,6 +5,9 @@ const UsersSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a username.'],
   },
+  userFullName: {
+    type: String,
+  },
   userImageUrl: {
     type: String,
   },

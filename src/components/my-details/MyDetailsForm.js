@@ -72,6 +72,7 @@ export default function MyDetailsForm() {
       if (response?.data?.success) {
         reset({
           username: '',
+          fullName: '',
           userImageUrl: '',
           myDetails: '',
           creatorEmail: formData?.user?.email,
@@ -94,6 +95,12 @@ export default function MyDetailsForm() {
         control={control}
         label="User Name"
         required
+      />
+      <div className={classes.margin} />
+      <FormInputText
+        formId="fullName"
+        control={control}
+        label="Full Name (Ex: John Doe)"
       />
       <div className={classes.margin} />
       <FormInputText
