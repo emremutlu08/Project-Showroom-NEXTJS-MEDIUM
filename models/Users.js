@@ -17,6 +17,13 @@ const UsersSchema = new mongoose.Schema({
   userEmail: {
     type: String,
   },
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  createdAt: {
+    type: Date,
+  },
 });
 
 export default mongoose.models.User || mongoose.model('Users', UsersSchema);

@@ -30,6 +30,10 @@ const ProjectSchema = new mongoose.Schema({
   creatorEmail: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 export default mongoose.models.Project ||
