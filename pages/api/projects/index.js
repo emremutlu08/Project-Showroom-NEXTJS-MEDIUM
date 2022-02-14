@@ -9,9 +9,8 @@ import {
   GALLERY_LISTED_ERROR,
   PROJECT_ADDED,
   PROJECT_ADDED_ERROR,
-  WRONG_METHOD,
-  FILL_AREAS,
 } from '../../../lib/api/projects/messages';
+import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {

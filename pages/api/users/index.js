@@ -6,9 +6,8 @@ import Projects from '../../../models/Projects';
 import {
   PROJECT_ADDED,
   PROJECT_ADDED_ERROR,
-  WRONG_METHOD,
-  FILL_AREAS,
 } from '../../../lib/api/projects/messages';
+import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
@@ -17,38 +16,13 @@ export default async function handler(req, res) {
   await dbConnect();
 
   if (method === 'POST') {
-    if (!body.projectTitle || !body.thumbnailUrl) {
+    if (!body.username) {
       return res.status(406).json({
         success: false,
         message: FILL_AREAS,
         loading: false,
       });
     }
-
-    delete body.pw;
-    const bodyArr = [body];
-    const filteredBody = bodyArr.map(
-      ({
-        projectTitle,
-        thumbnailUrl,
-        description,
-        skillTags,
-        leftButtonTitle,
-        leftButtonUrl,
-        rightButtonTitle,
-        rightButtonUrl,
-      }) => ({
-        projectTitle,
-        thumbnailUrl,
-        description,
-        skillTags,
-        leftButtonTitle,
-        leftButtonUrl,
-        rightButtonTitle,
-        rightButtonUrl,
-      }),
-    );
-    body = filteredBody[0];
   }
 
   switch (method) {
@@ -67,8 +41,8 @@ export default async function handler(req, res) {
       } catch (error) {
         res.status(400).json({
           success: false,
-          message: PROJECT_ADDED_ERROR,
           error,
+          message: PROJECT_ADDED_ERROR,
           loading: false,
         });
       }
