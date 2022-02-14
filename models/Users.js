@@ -4,6 +4,7 @@ const UsersSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, 'Please provide a username.'],
+    unique: true,
   },
   userFullName: {
     type: String,
@@ -16,6 +17,8 @@ const UsersSchema = new mongoose.Schema({
   },
   userEmail: {
     type: String,
+    required: [true, 'Please provide an email address.'],
+    unique: true,
   },
   updatedAt: {
     type: Date,

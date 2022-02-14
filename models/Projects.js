@@ -21,7 +21,6 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
   },
   rightButtonTitle: {
-    required: [true, 'Please provide an image url for this pet.'],
     type: String,
   },
   rightButtonUrl: {
@@ -29,6 +28,7 @@ const ProjectSchema = new mongoose.Schema({
   },
   creatorEmail: {
     type: String,
+    required: [true, 'Please provide an email address.'],
   },
   createdAt: {
     type: Date,
