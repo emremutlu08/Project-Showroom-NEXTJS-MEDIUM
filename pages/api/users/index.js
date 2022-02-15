@@ -1,6 +1,6 @@
 /* DATABASE */
 import dbConnect from '../../../lib/dbConnect';
-import Projects from '../../../models/Projects';
+import Users from '../../../models/Users';
 
 /* MESSAGES */
 import {
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     case 'POST':
       try {
         body.createdAt = Date.now();
-        const project = await Projects.create(
+        const project = await Users.create(
           req.body,
         ); /* create a new model in the database */
         res.status(201).json({
