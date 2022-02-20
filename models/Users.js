@@ -25,9 +25,6 @@ const UsersSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  createdAt: {
-    type: Date,
-  },
 });
 
 export default mongoose.models.Users || mongoose.model('Users', UsersSchema);
