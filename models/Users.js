@@ -16,6 +16,9 @@ const UsersSchema = new mongoose.Schema({
   userDescription: {
     type: String,
   },
+  emailVerified: {
+    type: Boolean,
+  },
   email: {
     type: String,
     required: [true, 'Please provide an email address.'],
