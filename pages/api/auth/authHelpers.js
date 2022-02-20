@@ -23,19 +23,24 @@ export const redirectFunction = async (url) => {
   return Promise.resolve('/');
 };
 
-export const sessionFunction = async ({ session, token }) => {
-  session.accessToken = token.accessToken;
+export const sessionFunction = async (sessionParamList) => {
+  const { session, token } = sessionParamList;
+  session.accessToken = token?.accessToken;
   return session;
 };
 
-export const jwtFunction = async ({ token, account }) => {
+export const jwtFunction = async (jwtParamList) => {
+  const { token, account, isNewUser, profile } = jwtParamList;
   if (account) {
-    token.accessToken = account.access_token;
+    token.accessToken = account?.access_token;
+    token.isNewUser = isNewUser;
+    token.emailVerified = profile?.email_verified;
   }
   return token;
 };
 
 export const providers = [
+  // Configure one or more authentication providers
   GoogleProvider(googleParams),
   // ...add more providers here
 ];

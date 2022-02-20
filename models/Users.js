@@ -1,21 +1,22 @@
 import mongoose from 'mongoose';
-
+// CANNOT BE USE TO CREATE A NEW USER
+// USE ONLY TO UPDATE THE USER
 const UsersSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, 'Please provide a username.'],
     unique: true,
   },
-  userFullName: {
+  name: {
     type: String,
   },
-  userImageUrl: {
+  image: {
     type: String,
   },
   userDescription: {
     type: String,
   },
-  userEmail: {
+  email: {
     type: String,
     required: [true, 'Please provide an email address.'],
     unique: true,
@@ -29,4 +30,4 @@ const UsersSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.User || mongoose.model('Users', UsersSchema);
+export default mongoose.models.Users || mongoose.model('Users', UsersSchema);

@@ -1,6 +1,3 @@
-/* REACT */
-import { useState } from 'react';
-
 /* MATERIAL UI */
 
 // COMPONENTS
@@ -61,15 +58,13 @@ export default function MyDetailsForm() {
   const classes = useStyles();
   const { control, handleSubmit, reset } = useForm();
 
-  const [tags, setTags] = useState([]);
-
   const onSubmit = async (formData) => {
-    const projectValues = { ...formData, skillTags: tags };
+    const projectValues = { ...formData };
     if (formData.username) {
       // send data to db
-      const response = await api.post('/projects', projectValues); // TODO: change to /my-details
+      const response = await api.post('/users', projectValues); // TODO: change to /my-details
       console.log(response, 'response');
-      if (response?.data?.success) {
+      if (response?.success) {
         reset({
           username: '',
           fullName: '',
@@ -77,10 +72,9 @@ export default function MyDetailsForm() {
           myDetails: '',
           creatorEmail: formData?.user?.email,
         });
-        setTags([]);
-        notifySuccess(response?.data?.message);
+        notifySuccess(response?.message);
       } else {
-        notifyError(response?.data?.message);
+        notifyError(response?.message);
       }
     }
   };
@@ -88,12 +82,14 @@ export default function MyDetailsForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
       <Typography gutterBottom variant="h4" component="h4" color="textPrimary">
-        Manege Details
+        Manege Details <small>(E-Mail: {data?.user?.email})</small>
       </Typography>
       <FormInputText
         formId="username"
         control={control}
         label="User Name"
+        inputProps={{ 'aria-label': 'User Name' }}
+        defaultValue={data?.user?.email?.split('@')?.at(0)}
         required
       />
       <div className={classes.margin} />
@@ -101,18 +97,23 @@ export default function MyDetailsForm() {
         formId="fullName"
         control={control}
         label="Full Name (Ex: John Doe)"
+        inputProps={{ 'aria-label': 'Full Name (Ex: John Doe)' }}
+        defaultValue={data?.user?.name}
       />
       <div className={classes.margin} />
       <FormInputText
         formId="userImageUrl"
         control={control}
         label="Profile Image Url"
+        inputProps={{ 'aria-label': 'Profile Image Url' }}
+        defaultValue={data?.user?.image}
       />
       <div className={classes.margin} />
       <FormTextarea
         formId="myDetails"
         control={control}
         placeholder="My Details"
+        inputProps={{ 'aria-label': 'My Details' }}
       />
       <div className={classes.margin} />
 

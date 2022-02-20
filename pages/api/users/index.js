@@ -1,22 +1,50 @@
+/** USER */
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+
 /* DATABASE */
 import dbConnect from '../../../lib/dbConnect';
 import Users from '../../../models/Users';
 
 /* MESSAGES */
 import {
-  PROJECT_ADDED,
-  PROJECT_ADDED_ERROR,
-} from '../../../lib/api/projects/messages';
-import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
+  FILL_AREAS,
+  WRONG_METHOD,
+  UNAUTHORIZED,
+} from '../../../lib/general/messages';
+import {
+  USER_CREATED,
+  USER_CREATED_ERROR,
+} from '../../../lib/api/users/messages';
+
+/** ENVIRONMENT */
+const secret = process.env.JWT_SECRET;
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
-  const { method } = req;
-  let { body } = req;
+  const { method, body } = req;
   await dbConnect();
+  const session = await getSession({ req });
+  const token = await getToken({ req, secret });
+  const isModified =
+    token?.accessToken !== session?.accessToken ||
+    token?.email !== session?.user?.email;
+
+  if (isModified || !token?.isNewUser) {
+    return res.status(401).json({
+      success: false,
+      message: UNAUTHORIZED,
+      loading: false,
+    });
+  }
+
+  const createUserBody = {
+    ...body,
+    userEmail: session?.user?.email,
+  };
 
   if (method === 'POST') {
-    if (!body.username) {
+    if (!createUserBody?.username) {
       return res.status(406).json({
         success: false,
         message: FILL_AREAS,
@@ -30,19 +58,19 @@ export default async function handler(req, res) {
       try {
         body.createdAt = Date.now();
         const project = await Users.create(
-          req.body,
+          createUserBody,
         ); /* create a new model in the database */
         res.status(201).json({
           success: true,
           data: project,
-          message: PROJECT_ADDED,
+          message: USER_CREATED,
           loading: false,
         });
       } catch (error) {
         res.status(400).json({
           success: false,
           error,
-          message: PROJECT_ADDED_ERROR,
+          message: USER_CREATED_ERROR,
           loading: false,
         });
       }
