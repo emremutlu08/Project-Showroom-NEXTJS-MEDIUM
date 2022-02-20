@@ -43,7 +43,8 @@ export default async function handler(req, res) {
     userEmail: session?.user?.email,
   };
 
-  if (method === 'POST') {
+  // Only PUT method is allowed
+  if (method === 'PUT') {
     if (!createUserBody?.username) {
       return res.status(406).json({
         success: false,
@@ -54,7 +55,7 @@ export default async function handler(req, res) {
   }
 
   switch (method) {
-    case 'POST':
+    case 'PUT':
       try {
         body.createdAt = Date.now();
         const project = await Users.create(
