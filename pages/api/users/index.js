@@ -40,7 +40,10 @@ export default async function handler(req, res) {
 
   const createUserBody = {
     ...body,
-    userEmail: session?.user?.email,
+  };
+
+  const filter = {
+    email: session?.user?.email,
   };
 
   // Only PUT method is allowed
@@ -58,12 +61,13 @@ export default async function handler(req, res) {
     case 'PUT':
       try {
         body.createdAt = Date.now();
-        const project = await Users.create(
+        const user = await Users.findOneAndUpdate(
           createUserBody,
+          filter,
         ); /* create a new model in the database */
         res.status(201).json({
           success: true,
-          data: project,
+          data: user,
           message: USER_CREATED,
           loading: false,
         });
