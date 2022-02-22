@@ -62,8 +62,8 @@ export default async function handler(req, res) {
       try {
         body.createdAt = Date.now();
         const user = await Users.findOneAndUpdate(
-          createUserBody,
           filter,
+          createUserBody,
         ); /* create a new model in the database */
         res.status(201).json({
           success: true,
