@@ -15,6 +15,8 @@ import {
 import {
   USER_UPDATED,
   USER_UPDATED_ERROR,
+  USER_LISTED,
+  USER_LISTED_ERROR,
 } from '../../../lib/api/users/messages';
 
 /** ENVIRONMENT */
@@ -58,6 +60,7 @@ export default async function handler(req, res) {
   }
 
   switch (method) {
+    // Update a user
     case 'PUT':
       try {
         body.createdAt = Date.now();
@@ -80,6 +83,50 @@ export default async function handler(req, res) {
         });
       }
       break;
+
+    // Get the user
+    case 'GET':
+      try {
+        const userItem = await Users.findOne({ email: session?.user?.email });
+
+        if (!userItem) {
+          return res.status(400).json({
+            success: false,
+            message: USER_LISTED_ERROR,
+            loading: false,
+          });
+        }
+
+        res.status(200).json({
+          success: true,
+          data: userItem,
+          message: USER_LISTED,
+          loading: false,
+        });
+      } catch (error) {
+        res
+          .status(400)
+          .json({ success: false, message: USER_LISTED_ERROR, loading: false });
+      }
+      break;
+    // TODO: DELETE the user
+    // case 'DELETE' /* Delete a model by its ID */:
+    // try {
+    //   await Users.findOneAndDelete({ username });
+    //   res.status(200).json({
+    //     success: true,
+    //     data: {},
+    //     message: USER_DELETED,
+    //     loading: false,
+    //   });
+    // } catch (error) {
+    //   res.status(400).json({
+    //     success: false,
+    //     message: USER_DELETED_ERROR,
+    //     loading: false,
+    //   });
+    // }
+    // break;
     default:
       res
         .status(400)
