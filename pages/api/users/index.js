@@ -13,8 +13,8 @@ import {
   UNAUTHORIZED,
 } from '../../../lib/general/messages';
 import {
-  USER_CREATED,
-  USER_CREATED_ERROR,
+  USER_UPDATED,
+  USER_UPDATED_ERROR,
 } from '../../../lib/api/users/messages';
 
 /** ENVIRONMENT */
@@ -68,14 +68,14 @@ export default async function handler(req, res) {
         res.status(201).json({
           success: true,
           data: user,
-          message: USER_CREATED,
+          message: USER_UPDATED,
           loading: false,
         });
       } catch (error) {
         res.status(400).json({
           success: false,
           error,
-          message: USER_CREATED_ERROR,
+          message: USER_UPDATED_ERROR,
           loading: false,
         });
       }
