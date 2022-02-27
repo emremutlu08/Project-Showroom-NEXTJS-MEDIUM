@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     token?.accessToken !== session?.accessToken ||
     token?.email !== session?.user?.email;
 
-  if (isModified || !token?.isNewUser) {
+  if (isModified) {
     return res.status(401).json({
       success: false,
       message: UNAUTHORIZED,

@@ -16,9 +16,11 @@ import { useForm } from 'react-hook-form';
 import FormInputText from '../formComponents/FormInputText';
 import FormTextarea from '../formComponents/FormTextarea';
 import api from '../../../lib/api/api';
-import { useSession } from 'next-auth/react';
 import { notifySuccess } from './../toasts/notifySuccess';
 import { notifyError } from './../toasts/notifyError';
+import { useSession } from 'next-auth/react';
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
 }));
-
 /* MAIN FUNCTION */
 export default function MyDetailsForm() {
   /**
@@ -52,9 +53,20 @@ export default function MyDetailsForm() {
    *
    */
   const { data, status } = useSession(); // TODO: useSession will be converted to useUser() in separate hook file
-
+  // const user = useUser(); // TODO: useSession will be converted to useUser() in separate hook file
+  // console.log(user, 'user2');
   if (status !== 'authenticated') return null;
-  console.log(data, 'data');
+
+  // TODO: getUser from outside
+  // const getUser = async () => {
+  //   return await api.get('/users');
+  // };
+
+  // const user = getUser();
+
+  // console.log(user, 'user');
+
+  // console.log(data, 'data');
   const classes = useStyles();
   const { control, handleSubmit, reset } = useForm();
 

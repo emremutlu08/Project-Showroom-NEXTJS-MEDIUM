@@ -20,7 +20,8 @@
     "prop-types": "^15.7.2",
     "react": "latest",
     "react-dom": "latest",
-    "react-hook-form": "^7.15.1"
+    "react-hook-form": "^7.15.1",
+    "swr": "^1.2.2"
   },
   "scripts": {
     "dev": "next",
