@@ -9,6 +9,11 @@ import { makeStyles } from '@material-ui/core/styles';
 /* COMPONENTS */
 import AddProjectForm from '../../src/components/add-project/AddProjectForm';
 
+import { getCookie, deleteCookie } from 'cookies-next';
+import jwt from 'jsonwebtoken';
+import Users from '../../models/Users';
+import connect from '../../lib/database';
+
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
   main: {
@@ -22,13 +27,51 @@ const useStyles = makeStyles(() => ({
 }));
 
 /* MAIN FUNCTION */
-export default function AddProjectPage() {
+export default function AddProjectPage(props) {
   const classes = useStyles();
 
   return (
     <Box className={classes.main}>
-      <AddProjectForm />
+      <AddProjectForm props={props} />
       <div className={classes.fillRest} />
     </Box>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  try {
+    // connect db
+    await connect();
+    // check cookie
+    const token = getCookie('token', { req, res });
+    if (!token)
+      return {
+        redirect: {
+          destination: '/',
+        },
+      };
+
+    const verified = await jwt.decode(token);
+    const obj = await Users.findOne({ _id: verified.id });
+    if (!obj)
+      return {
+        redirect: {
+          destination: '/',
+        },
+      };
+    return {
+      props: {
+        creatorId: verified.id,
+        creatorEmail: obj.email,
+        creatorDisplayName: obj.displayName,
+      },
+    };
+  } catch (err) {
+    deleteCookie('token', { req, res });
+    return {
+      redirect: {
+        destination: '/',
+      },
+    };
+  }
 }

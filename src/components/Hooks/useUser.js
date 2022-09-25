@@ -1,6 +1,4 @@
-import { useSession } from 'next-auth/react';
 import api from './../../../lib/api/api';
-import React from 'react';
 
 function useUser({ data }) {
   // Render data...

@@ -1,10 +1,10 @@
 /* DATABASE */
-import dbConnect from '../../../lib/dbConnect';
+import connect from '../../../lib/database';
 import Projects from '../../../models/Projects';
 
 /* MESSAGES */
 import {
-  PROVIDE_PW,
+  // PROVIDE_PW,
   ITEM_LISTED,
   ITEM_LISTED_ERROR,
   ITEM_EDITED,
@@ -21,17 +21,8 @@ export default async function handler(req, res) {
     query: { id },
     method,
   } = req;
-  await dbConnect();
-  const FormSecretPassword = process.env.NEXT_PUBLIC_SECRET_PW;
-  const isEditableMethod = method === 'PUT' || method === 'DELETE';
-  let { pw } = body;
-  pw = pw && pw.toString();
+  await connect();
 
-  if (isEditableMethod && pw !== FormSecretPassword) {
-    return res
-      .status(401)
-      .json({ success: false, message: PROVIDE_PW, loading: false });
-  }
   delete body.pw;
   const bodyArr = [body];
   const filteredBody = bodyArr.map(
@@ -60,7 +51,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET' /* Get a model by its ID */:
       try {
-        const galleryItem = await Projects.findById(id);
+        const galleryItem = await Projects.find({ creatorId: id });
 
         if (!galleryItem) {
           return res.status(400).json({

@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function AppBarComponent(props) {
-  const { darkMode, handleDarkMode } = props;
+  const { darkMode, handleDarkMode, currentProfileStr, currentUserStr } = props;
   const classes = useStyles();
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -28,7 +28,10 @@ export default function AppBarComponent(props) {
     <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
         <AppBarMenu setOpenMenu={setOpenMenu} openMenu={openMenu} />
-        <AppBarTitle />
+        <AppBarTitle
+          currentUserStr={currentUserStr}
+          currentProfileStr={currentProfileStr}
+        />
         <LoginRegisterButton />
         <DarkModeToggle darkMode={darkMode} handleDarkMode={handleDarkMode} />
       </Toolbar>

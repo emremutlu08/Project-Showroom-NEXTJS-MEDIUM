@@ -1,23 +1,28 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import LoginIcon from '@mui/icons-material/Login';
+
 import LogoutIcon from '@mui/icons-material/Logout';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { deleteCookie, getCookie } from 'cookies-next';
 
 export default function LoginRegisterButton() {
-  const { status } = useSession();
+  const router = useRouter();
 
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
+  const logout = () => {
+    deleteCookie('token');
+    router.replace('/');
+  };
+
+  const cookieExists = getCookie('token');
 
   return (
     <>
-      {status === 'unauthenticated' ? (
+      {!cookieExists ? (
         <>
-          <Button variant="contained" onClick={() => signIn()}>
+          <Button href="/api/google" variant="contained">
             <LoginIcon />
             <Box sx={{ margin: '0 4px' }} />
             <Typography>Login / Register</Typography>
@@ -25,7 +30,7 @@ export default function LoginRegisterButton() {
         </>
       ) : (
         <>
-          <Button variant="contained" onClick={() => signOut()}>
+          <Button variant="contained" onClick={logout}>
             <LogoutIcon />
             <Box sx={{ margin: '0 4px' }} />
             <Typography>Logout</Typography>
@@ -34,4 +39,15 @@ export default function LoginRegisterButton() {
       )}
     </>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  try {
+    const cookieExists = getCookie('token', { req, res });
+
+    if (cookieExists) return { redirect: { destination: '/' } };
+    return { props: {} };
+  } catch (err) {
+    return { props: {} };
+  }
 }

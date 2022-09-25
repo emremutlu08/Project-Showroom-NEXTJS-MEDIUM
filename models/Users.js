@@ -1,33 +1,43 @@
-import mongoose from 'mongoose';
-// CANNOT BE USE TO CREATE A NEW USER
-// USE ONLY TO UPDATE THE USER
-const UsersSchema = new mongoose.Schema({
-  username: {
+import { Schema, model, models } from 'mongoose';
+
+const UsersSchema = new Schema({
+  googleId: {
     type: String,
-    required: [true, 'Please provide a username.'],
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
     unique: true,
   },
-  name: {
+  emailVerified: {
+    type: Boolean,
+    required: true,
+  },
+  displayName: {
     type: String,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
   },
   image: {
     type: String,
   },
-  userDescription: {
+  accessToken: {
     type: String,
   },
-  emailVerified: {
-    type: Boolean,
-  },
-  email: {
+  tokens: {
     type: String,
-    required: [true, 'Please provide an email address.'],
-    unique: true,
   },
-  updatedAt: {
+  createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
-export default mongoose.models.Users || mongoose.model('Users', UsersSchema);
+export default models.Users || model('Users', UsersSchema);

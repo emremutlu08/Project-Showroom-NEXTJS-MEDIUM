@@ -22,6 +22,9 @@ function MyApp(props) {
     Component,
     pageProps: { session, ...pageProps },
   } = props;
+
+  const { currentUserStr, currentProfileStr } = pageProps;
+
   // Theme
   const [darkMode, setDarkMode] = useState(false);
   const theme = darkMode ? darkTheme : lightTheme;
@@ -62,6 +65,8 @@ function MyApp(props) {
           <AppBarComponent
             darkMode={darkMode}
             handleDarkMode={handleDarkMode}
+            currentUserStr={currentUserStr}
+            currentProfileStr={currentProfileStr}
           />
           <Component {...pageProps} />
           <Footer />

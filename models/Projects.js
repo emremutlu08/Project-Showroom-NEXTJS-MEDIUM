@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
-const ProjectSchema = new mongoose.Schema({
+const ProjectSchema = new Schema({
   projectTitle: {
     type: String,
     required: [true, 'Please provide a project title.'],
@@ -28,7 +28,18 @@ const ProjectSchema = new mongoose.Schema({
   },
   creatorEmail: {
     type: String,
-    required: [true, 'Please provide an email address.'],
+  },
+  creatorId: {
+    type: String,
+  },
+  creatorDisplayName: {
+    type: String,
+  },
+  creatorFirstName: {
+    type: String,
+  },
+  creatorLastName: {
+    type: String,
   },
   createdAt: {
     type: Date,
@@ -36,5 +47,4 @@ const ProjectSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Project ||
-  mongoose.model('Project', ProjectSchema);
+export default models.Projects || model('Projects', ProjectSchema);

@@ -1,6 +1,6 @@
 /* DATABASE */
 import connect from '../../../lib/database';
-import Projects from '../../../models/Projects';
+import Profiles from '../../../models/Profiles';
 
 /* MESSAGES */
 import {
@@ -10,45 +10,44 @@ import {
   PROJECT_ADDED,
   PROJECT_ADDED_ERROR,
 } from '../../../lib/api/projects/messages';
-import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
+import { WRONG_METHOD } from '../../../lib/general/messages';
+
+import { getCookie } from 'cookies-next';
+import jwt from 'jsonwebtoken';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
   const { method } = req;
   let { body } = req;
-
   await connect();
 
-  if (method === 'POST') {
-    if (!body.projectTitle || !body.thumbnailUrl) {
-      return res.status(406).json({
-        success: false,
-        message: FILL_AREAS,
-        loading: false,
-      });
-    }
+  const token = getCookie('token', { req, res });
 
-    delete body.pw;
+  const verified = jwt.decode(token);
+
+  const userId = verified?.id;
+
+  if (method === 'POST') {
     const bodyArr = [body];
     const filteredBody = bodyArr.map(
       ({
-        projectTitle,
-        thumbnailUrl,
-        description,
-        skillTags,
-        leftButtonTitle,
-        leftButtonUrl,
-        rightButtonTitle,
-        rightButtonUrl,
+        username,
+        myDetails,
+        giveNameToButton,
+        addOneUrl,
+        title,
+        creatorId,
+        creatorEmail,
+        creatorDisplayName,
       }) => ({
-        projectTitle,
-        thumbnailUrl,
-        description,
-        skillTags,
-        leftButtonTitle,
-        leftButtonUrl,
-        rightButtonTitle,
-        rightButtonUrl,
+        username,
+        myDetails,
+        giveNameToButton,
+        addOneUrl,
+        title,
+        creatorId,
+        creatorEmail,
+        creatorDisplayName,
       }),
     );
     body = filteredBody[0];
@@ -57,7 +56,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const projectList = await Projects.find({});
+        const projectList = await Profiles.find({});
         res.status(200).json({
           success: true,
           data: projectList,
@@ -75,13 +74,26 @@ export default async function handler(req, res) {
       break;
     case 'POST':
       try {
-        body.createdAt = Date.now();
-        const project = await Projects.create(
+        const profile = await Profiles.findOne({ creatorId: userId });
+        if (!profile) {
+          body.createdAt = Date.now();
+          const profile = await Profiles.create(
+            req.body,
+          ); /* create a new model in the database */
+          res.status(201).json({
+            success: true,
+            data: profile,
+            message: PROJECT_ADDED,
+            loading: false,
+          });
+        }
+        const updatedProfile = await Profiles.findOneAndUpdate(
+          { creatorId: userId },
           req.body,
-        ); /* create a new model in the database */
+        );
         res.status(201).json({
           success: true,
-          data: project,
+          data: updatedProfile,
           message: PROJECT_ADDED,
           loading: false,
         });

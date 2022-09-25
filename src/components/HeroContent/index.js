@@ -17,18 +17,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HeroContent() {
+export default function HeroContent({ currentUser, currentProfile }) {
   const classes = useStyles();
 
   return (
     <div className={classes.heroContent}>
       <Container maxWidth="md">
-        <HeroName fullname={'EMRE MUTLU'} />
-        <HeroDetails details={'I am a frontend web developer.'} />
+        <HeroName
+          fullname={
+            currentProfile?.username || currentUser?.displayName || null
+          }
+        />
+        <HeroDetails details={currentProfile?.myDetails || null} />
         <div className={classes.topSpace} />
         <HeroButtons
           firstButtonText={'My projects'}
-          secondButtonText={'My Cv (PDF)'}
+          secondButtonText={currentProfile?.giveNameToButton || null}
+          cv={currentProfile?.addOneUrl || null}
+          currentUser={currentUser}
         />
         <Divider className={classes.topSpace} />
       </Container>

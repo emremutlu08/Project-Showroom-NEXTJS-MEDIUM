@@ -40,7 +40,7 @@ export default function CardSelf({ card }) {
 
   return (
     <Card className={classes.card}>
-      <CardGalleryHeader />
+      <CardGalleryHeader card={card} />
       <CardMedia
         className={classes.cardMedia}
         image={card.thumbnailUrl}

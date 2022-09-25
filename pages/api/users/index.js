@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 
 /* DATABASE */
-import dbConnect from '../../../lib/dbConnect';
+import connect from '../../../lib/database';
 import Users from '../../../models/Users';
 
 /* MESSAGES */
@@ -25,7 +25,7 @@ const secret = process.env.JWT_SECRET;
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
   const { method, body } = req;
-  await dbConnect();
+  await connect();
   const session = await getSession({ req });
   const token = await getToken({ req, secret });
   const isModified =
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
 
   // Only PUT method is allowed
   if (method === 'PUT') {
-    if (!createUserBody?.username) {
+    if (!createUserBody.username) {
       return res.status(406).json({
         success: false,
         message: FILL_AREAS,
@@ -87,7 +87,7 @@ export default async function handler(req, res) {
     // Get the user
     case 'GET':
       try {
-        const userItem = await Users.findOne({ email: session?.user?.email });
+        const userItem = await Users.find({ email: session?.user?.email });
 
         if (!userItem) {
           return res.status(400).json({
