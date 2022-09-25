@@ -27,6 +27,7 @@ export default async function handler(req, res) {
   const { method, body } = req;
   await dbConnect();
   const session = await getSession({ req });
+  console.log(session, 'session');
   const token = await getToken({ req, secret });
   const isModified =
     token?.accessToken !== session?.accessToken ||

@@ -8,15 +8,6 @@ import FilterButtons from './FilterButtons';
 import PaginationOutlined from './PaginationOutlined';
 import CardGalleryItems from './CardGalleryItems';
 
-// import { getCookie } from 'cookies-next';
-// import jwt from 'jsonwebtoken';
-// import Users from '../../../models/Users';
-// import Profiles from '../../../models/Profiles';
-// import Projects from '../../../models/Projects';
-
-/* CONTEXTS */
-// import PropTypes from 'prop-types';
-
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingBottom: theme.spacing(8),
@@ -84,38 +75,3 @@ export default function CardGallery({ currentUserProjects, currentUser }) {
     </>
   );
 }
-
-// CardGallery.propTypes = {
-//   projects: PropTypes.object,
-// };
-
-// export async function getServerSideProps({ req, res }) {
-//   const token = getCookie('token', { req, res });
-//   if (!token)
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-
-//   const verified = jwt.decode(token);
-
-//   const currentUser = await Users.findOne({ _id: verified?.id });
-//   const profile = await Profiles.findOne({ creatorId: verified?.id });
-//   const projects = await Projects.find({ creatorId: verified?.id });
-
-//   // if (!currentUser)
-//   //   return {
-//   //     redirect: {
-//   //       destination: '/',
-//   //     },
-//   //   };
-
-//   const currentUserStr = JSON.stringify(currentUser);
-//   const currentProfileStr = JSON.stringify(profile);
-//   const projectsStr = JSON.stringify(projects);
-
-//   return {
-//     props: { currentUserStr, currentProfileStr, projectsStr },
-//   };
-// }

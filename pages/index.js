@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import Users from '../models/Users';
 import Profiles from '../models/Profiles';
 import Projects from '../models/Projects';
+import dbConnect from '../lib/dbConnect';
 
 export default function IndexPage(props) {
   const { currentProfileStr, currentUserStr, projectsStr } = props;
@@ -50,6 +51,8 @@ IndexPage.defaultProps = {
 };
 
 export async function getServerSideProps({ req, res }) {
+  await dbConnect();
+
   const token = getCookie('token', { req, res });
   // if (!token)
   //   return {

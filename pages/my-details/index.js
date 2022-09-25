@@ -14,6 +14,7 @@ import Users from '../../models/Users';
 
 import { getCookie, deleteCookie } from 'cookies-next';
 import Profile from '../../models/Profiles';
+import dbConnect from '../../lib/dbConnect';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -41,6 +42,8 @@ export default function MyDetailsPage(props) {
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await dbConnect();
+
     // check cookie
     const token = getCookie('token', { req, res });
     if (!token)
