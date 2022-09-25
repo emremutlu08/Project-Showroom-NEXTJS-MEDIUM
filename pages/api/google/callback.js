@@ -6,6 +6,7 @@ import '../../../lib/passport';
 export default async function (req, res, next) {
   await dbConnect();
   passport.authenticate('google', (err, user, info) => {
+    console.log(user, 'user');
     if (err || !user) {
       return res.redirect('http://localhost:3000/?a=auth_fail');
     }
