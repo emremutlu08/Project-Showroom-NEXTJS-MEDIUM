@@ -1,5 +1,4 @@
 /* DATABASE */
-import connect from '../../../lib/database';
 import Projects from '../../../models/Projects';
 
 /* MESSAGES */
@@ -13,6 +12,7 @@ import {
   ITEM_DELETED_ERROR,
   WRONG_METHOD,
 } from '../../../lib/api/projects/messages';
+import dbConnect from '../../../lib/dbConnect';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     query: { id },
     method,
   } = req;
-  await connect();
+  await dbConnect();
 
   delete body.pw;
   const bodyArr = [body];

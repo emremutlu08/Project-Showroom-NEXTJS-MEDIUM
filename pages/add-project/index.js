@@ -1,4 +1,5 @@
 /* MATERIAL UI */
+import React from 'react';
 
 // COMPONENTS
 import Box from '@material-ui/core/Box';
@@ -12,7 +13,7 @@ import AddProjectForm from '../../src/components/add-project/AddProjectForm';
 import { getCookie, deleteCookie } from 'cookies-next';
 import jwt from 'jsonwebtoken';
 import Users from '../../models/Users';
-import connect from '../../lib/database';
+import dbConnect from '../../lib/dbConnect';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -41,7 +42,7 @@ export default function AddProjectPage(props) {
 export async function getServerSideProps({ req, res }) {
   try {
     // connect db
-    await connect();
+    await dbConnect();
     // check cookie
     const token = getCookie('token', { req, res });
     if (!token)

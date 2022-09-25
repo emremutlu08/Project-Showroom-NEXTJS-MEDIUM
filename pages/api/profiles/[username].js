@@ -1,5 +1,4 @@
 /* DATABASE */
-// import connect from '../../../lib/database';
 import Profiles from '../../../models/Profiles';
 
 /* MESSAGES */
@@ -15,7 +14,6 @@ export default async function handler(req, res) {
     query: { username },
     method,
   } = req;
-  // await connect();
 
   switch (method) {
     case 'GET':

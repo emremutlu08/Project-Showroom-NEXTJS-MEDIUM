@@ -1,5 +1,4 @@
 /* DATABASE */
-import connect from '../../../lib/database';
 import Profiles from '../../../models/Profiles';
 
 /* MESSAGES */
@@ -14,12 +13,13 @@ import { WRONG_METHOD } from '../../../lib/general/messages';
 
 import { getCookie } from 'cookies-next';
 import jwt from 'jsonwebtoken';
+import dbConnect from '../../../lib/dbConnect';
 
 /* MAIN FUNCTION */
-export default async function handler(req, res) {
+export default async function handler(req, res) { 
   const { method } = req;
   let { body } = req;
-  await connect();
+  await dbConnect();
 
   const token = getCookie('token', { req, res });
 

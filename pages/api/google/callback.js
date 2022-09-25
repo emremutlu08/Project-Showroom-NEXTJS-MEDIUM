@@ -1,10 +1,10 @@
 import { setCookie } from 'cookies-next';
 import passport from 'passport';
-import connect from '../../../lib/database';
+import dbConnect from '../../../lib/dbConnect';
 import '../../../lib/passport';
 
 export default async function (req, res, next) {
-  await connect();
+  await dbConnect();
   passport.authenticate('google', (err, user, info) => {
     if (err || !user) {
       return res.redirect('http://localhost:3000/?a=auth_fail');

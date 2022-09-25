@@ -1,5 +1,4 @@
 /* DATABASE */
-import connect from '../../../lib/database';
 import Users from '../../../models/Users';
 
 /* MESSAGES */
@@ -8,6 +7,7 @@ import {
   USER_LISTED,
   USER_LISTED_ERROR,
 } from '../../../lib/api/users/messages';
+import dbConnect from '../../../lib/dbConnect';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     query: { email },
     method,
   } = req;
-  await connect();
+  await dbConnect();
 
   switch (method) {
     case 'GET':

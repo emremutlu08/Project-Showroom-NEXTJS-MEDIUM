@@ -1,4 +1,5 @@
 /* MATERIAL UI */
+import React from 'react';
 
 // COMPONENTS
 import Box from '@material-ui/core/Box';
@@ -8,12 +9,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 /* COMPONENTS */
 import MyDetailsForm from './../../src/components/my-details/MyDetailsForm';
-
-import { getCookie, deleteCookie } from 'cookies-next';
 import jwt from 'jsonwebtoken';
 import Users from '../../models/Users';
+
+import { getCookie, deleteCookie } from 'cookies-next';
 import Profile from '../../models/Profiles';
-// import connect from '../../lib/database';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({

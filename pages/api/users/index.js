@@ -3,7 +3,6 @@ import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 
 /* DATABASE */
-import connect from '../../../lib/database';
 import Users from '../../../models/Users';
 
 /* MESSAGES */
@@ -18,6 +17,7 @@ import {
   USER_LISTED,
   USER_LISTED_ERROR,
 } from '../../../lib/api/users/messages';
+import dbConnect from '../../../lib/dbConnect';
 
 /** ENVIRONMENT */
 const secret = process.env.JWT_SECRET;
@@ -25,7 +25,7 @@ const secret = process.env.JWT_SECRET;
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
   const { method, body } = req;
-  await connect();
+  await dbConnect();
   const session = await getSession({ req });
   const token = await getToken({ req, secret });
   const isModified =

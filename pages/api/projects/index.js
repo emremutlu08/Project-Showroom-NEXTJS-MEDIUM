@@ -1,5 +1,4 @@
 /* DATABASE */
-import connect from '../../../lib/database';
 import Projects from '../../../models/Projects';
 
 /* MESSAGES */
@@ -11,13 +10,14 @@ import {
   PROJECT_ADDED_ERROR,
 } from '../../../lib/api/projects/messages';
 import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
+import dbConnect from '../../../lib/dbConnect';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
   const { method } = req;
   let { body } = req;
 
-  await connect();
+  await dbConnect();
 
   if (method === 'POST') {
     if (!body.projectTitle || !body.thumbnailUrl) {
