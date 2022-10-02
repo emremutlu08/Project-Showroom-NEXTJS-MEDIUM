@@ -49,6 +49,7 @@ export default function MyDetailsForm({ props }) {
     creatorDisplayName,
     creatorEmail,
     creatorId,
+    creatorDefaultUserName,
   } = props;
 
   const onSubmit = async (formData) => {
@@ -57,6 +58,7 @@ export default function MyDetailsForm({ props }) {
       creatorDisplayName,
       creatorEmail,
       creatorId,
+      creatorDefaultUserName,
     };
     if (formData) {
       const response = await fetch('/api/profiles', {
@@ -66,10 +68,11 @@ export default function MyDetailsForm({ props }) {
         },
         body: JSON.stringify(projectValues),
       });
-      if (response.status === 201) {
-        notifySuccess(response.statusText);
+      const notifyProfile = await response.json();
+      if (notifyProfile.success === true) {
+        notifySuccess(notifyProfile.message || 'Profile updated!');
       } else {
-        notifyError(response.statusText);
+        notifyError(notifyProfile.message || 'Profile could not updated!');
       }
     }
   };
@@ -85,7 +88,7 @@ export default function MyDetailsForm({ props }) {
         label="User Name"
         inputProps={{ 'aria-label': 'User Name' }}
         defaultValue={username ? username : props.creatorDisplayName}
-        required
+        disabled
       />
       <div className={classes.margin} />
       <FormTextarea

@@ -11,7 +11,7 @@ import EditProject from '../../src/components/edit-project/EditProject';
 
 import { getCookie } from 'cookies-next';
 import Projects from '../../models/Projects';
-import dbConnect from '../../lib/dbConnect';
+import connect from '../../lib/database';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -38,7 +38,7 @@ export default function EditProjectPage(props) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  await dbConnect();
+  await connect();
 
   const cardId = getCookie('cardIdToken', { req, res }) || null;
 
@@ -46,12 +46,12 @@ export async function getServerSideProps({ req, res }) {
     _id: cardId,
   });
 
-  if (!currentUserProjects)
-    return {
-      redirect: {
-        destination: '/',
-      },
-    };
+  // if (!currentUserProjects)
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //     },
+  //   };
 
   return {
     props: {

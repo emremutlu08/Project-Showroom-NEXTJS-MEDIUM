@@ -41,6 +41,9 @@ const ProjectSchema = new Schema({
   creatorLastName: {
     type: String,
   },
+  creatorDefaultUserName: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),

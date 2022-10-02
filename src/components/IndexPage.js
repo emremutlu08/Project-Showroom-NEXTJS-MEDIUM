@@ -35,7 +35,7 @@ export default function CardGalleryItems() {
         component="h6"
         color="textSecondary"
       >
-        Emre MUTLU
+        Emre MUTLU - Ercan AKALAR
       </Typography>
     </Box>
   );

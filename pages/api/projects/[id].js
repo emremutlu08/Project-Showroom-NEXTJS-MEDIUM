@@ -12,7 +12,7 @@ import {
   ITEM_DELETED_ERROR,
   WRONG_METHOD,
 } from '../../../lib/api/projects/messages';
-import dbConnect from '../../../lib/dbConnect';
+import connect from '../../../lib/database';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     query: { id },
     method,
   } = req;
-  await dbConnect();
+  await connect();
 
   delete body.pw;
   const bodyArr = [body];
@@ -51,7 +51,9 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET' /* Get a model by its ID */:
       try {
-        const galleryItem = await Projects.find({ creatorId: id });
+        const galleryItem = await Projects.find({
+          $or: [{ creatorId: id }, { creatorDefaultUserName: id }],
+        });
 
         if (!galleryItem) {
           return res.status(400).json({

@@ -61,8 +61,9 @@ export default function AddProjectForm({ props }) {
         },
         body: JSON.stringify(projectValues),
       });
+      const notifyProjects = await response.json();
 
-      if (response.status === 201) {
+      if (notifyProjects.success === true) {
         reset({
           projectTitle: '',
           thumbnailUrl: '',
@@ -73,9 +74,9 @@ export default function AddProjectForm({ props }) {
           rightButtonUrl: '',
         });
         setTags([]);
-        notifySuccess(response.statusText);
+        notifySuccess(notifyProjects.message || 'created');
       } else {
-        notifyError(response.statusText);
+        notifyError(notifyProjects.message || 'error');
       }
     }
   };

@@ -10,14 +10,14 @@ import {
   PROJECT_ADDED_ERROR,
 } from '../../../lib/api/projects/messages';
 import { FILL_AREAS, WRONG_METHOD } from '../../../lib/general/messages';
-import dbConnect from '../../../lib/dbConnect';
+import connect from '../../../lib/database';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
+  await connect();
+
   const { method } = req;
   let { body } = req;
-
-  await dbConnect();
 
   if (method === 'POST') {
     if (!body.projectTitle || !body.thumbnailUrl) {
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const projectList = await Projects.find({});
+        const projectList = await Projects.find();
         res.status(200).json({
           success: true,
           data: projectList,

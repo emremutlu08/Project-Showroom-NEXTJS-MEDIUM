@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const copyrightWhoHas = 'Emre MUTLU & ERCAN AKALAR';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -29,7 +31,7 @@ function Copyright() {
           target="_blank"
           color="inherit"
         >
-          Emre MUTLU
+          {copyrightWhoHas}
         </Link>
         .
       </div>
@@ -44,7 +46,7 @@ function Copyright() {
           target="_blank"
           color="inherit"
         >
-          Emre MUTLU
+          {copyrightWhoHas}
         </Link>
         , is of course highly appreciated!!
       </div>
@@ -52,6 +54,8 @@ function Copyright() {
     </Typography>
   );
 }
+
+const didByWho = 'Emre MUTLU & Ercan AKALAR';
 
 export default function Footer() {
   const classes = useStyles();
@@ -67,7 +71,7 @@ export default function Footer() {
         >
           {' '}
           <LinkNext href="https://project-showroom.vercel.app/" passHref>
-            <Link>PROJECT GALLERY | By Emre MUTLU</Link>
+            <Link>PROJECT GALLERY | {didByWho}</Link>
           </LinkNext>
         </Typography>
         <div className={classes.gap} />

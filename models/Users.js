@@ -5,6 +5,7 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
+  defaultUserName: { type: String },
   email: {
     type: String,
     required: true,
@@ -16,6 +17,8 @@ const UsersSchema = new Schema({
   },
   displayName: {
     type: String,
+    // required: true,
+    // unique: true,
   },
   firstName: {
     type: String,

@@ -13,7 +13,7 @@ import AddProjectForm from '../../src/components/add-project/AddProjectForm';
 import { getCookie, deleteCookie } from 'cookies-next';
 import jwt from 'jsonwebtoken';
 import Users from '../../models/Users';
-import dbConnect from '../../lib/dbConnect';
+import connect from '../../lib/database';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -42,29 +42,30 @@ export default function AddProjectPage(props) {
 export async function getServerSideProps({ req, res }) {
   try {
     // connect db
-    await dbConnect();
+    await connect();
     // check cookie
     const token = getCookie('token', { req, res });
-    if (!token)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
+    // if (!token)
+    //   return {
+    //     redirect: {
+    //       destination: '/',
+    //     },
+    //   };
 
     const verified = await jwt.decode(token);
     const obj = await Users.findOne({ _id: verified.id });
-    if (!obj)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
+    // if (!obj)
+    //   return {
+    //     redirect: {
+    //       destination: '/',
+    //     },
+    //   };
     return {
       props: {
         creatorId: verified.id,
         creatorEmail: obj.email,
         creatorDisplayName: obj.displayName,
+        creatorDefaultUserName: obj.defaultUserName,
       },
     };
   } catch (err) {

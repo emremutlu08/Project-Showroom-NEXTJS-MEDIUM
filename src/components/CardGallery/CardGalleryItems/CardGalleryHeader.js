@@ -50,6 +50,13 @@ export default function CardGalleryHeader({ card }) {
     const response = await fetch(`/api/projects/${card._id}`, {
       method: 'DELETE',
     });
+    if (response.status === 200) {
+      return {
+        redirect: {
+          destination: `/${card.creatorDefaultUserName}`,
+        },
+      };
+    }
     return response;
   };
 

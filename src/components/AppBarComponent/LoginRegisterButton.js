@@ -13,7 +13,7 @@ export default function LoginRegisterButton() {
 
   const logout = () => {
     deleteCookie('token');
-    router.replace('/');
+    router.push('/');
   };
 
   const cookieExists = getCookie('token');

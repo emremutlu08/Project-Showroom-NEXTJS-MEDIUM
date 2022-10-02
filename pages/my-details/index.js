@@ -14,7 +14,7 @@ import Users from '../../models/Users';
 
 import { getCookie, deleteCookie } from 'cookies-next';
 import Profile from '../../models/Profiles';
-import dbConnect from '../../lib/dbConnect';
+import connect from '../../lib/database';
 
 /* CUSTOM STYLES */
 const useStyles = makeStyles(() => ({
@@ -42,27 +42,27 @@ export default function MyDetailsPage(props) {
 
 export async function getServerSideProps({ req, res }) {
   try {
-    await dbConnect();
+    await connect();
 
     // check cookie
     const token = getCookie('token', { req, res });
-    if (!token)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
+    // if (!token)
+    //   return {
+    //     redirect: {
+    //       destination: '/',
+    //     },
+    //   };
 
     const verified = jwt.decode(token);
     const currentUser = await Users.findOne({ _id: verified.id });
     const currentProfile = await Profile.findOne({ creatorId: verified.id });
 
-    if (!currentUser)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
+    // if (!currentUser)
+    //   return {
+    //     redirect: {
+    //       destination: '/',
+    //     },
+    //   };
     return {
       props: {
         creatorId: verified.id,
@@ -73,6 +73,7 @@ export async function getServerSideProps({ req, res }) {
         giveNameToButton: currentProfile?.giveNameToButton || null,
         title: currentProfile?.title || null,
         addOneUrl: currentProfile?.addOneUrl || null,
+        creatorDefaultUserName: currentUser.defaultUserName,
       },
     };
   } catch (err) {

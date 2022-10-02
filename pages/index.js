@@ -6,13 +6,13 @@ import jwt from 'jsonwebtoken';
 import Users from '../models/Users';
 import Profiles from '../models/Profiles';
 import Projects from '../models/Projects';
-import dbConnect from '../lib/dbConnect';
+import connect from '../lib/database';
 
 export default function IndexPage(props) {
   const { currentProfileStr, currentUserStr, projectsStr } = props;
 
-  if (!currentProfileStr || !currentUserStr || !projectsStr) {
-    return <div>Please log in</div>;
+  if (!currentUserStr) {
+    return <div>Please log in!</div>;
   }
 
   return (
@@ -51,7 +51,7 @@ IndexPage.defaultProps = {
 };
 
 export async function getServerSideProps({ req, res }) {
-  await dbConnect();
+  await connect();
 
   const token = getCookie('token', { req, res });
   // if (!token)
@@ -66,13 +66,6 @@ export async function getServerSideProps({ req, res }) {
   const currentUser = await Users.findOne({ _id: verified?.id });
   const profile = await Profiles.findOne({ creatorId: verified?.id });
   const projects = await Projects.find({ creatorId: verified?.id });
-
-  // if (!currentUser)
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //     },
-  //   };
 
   const currentUserStr = currentUser ? JSON.stringify(currentUser) : null;
   const currentProfileStr = profile ? JSON.stringify(profile) : null;

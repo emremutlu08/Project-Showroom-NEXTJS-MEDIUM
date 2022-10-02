@@ -13,9 +13,9 @@ import { makeStyles } from '@material-ui/core';
 import { lightTheme, darkTheme } from '../src/components/ui/Theme';
 import Footer from '../src/components/Footer';
 import AppBarComponent from '../src/components/AppBarComponent';
-import { SessionProvider } from 'next-auth/react';
 import { ToastContainer } from 'material-react-toastify';
 import 'material-react-toastify/dist/ReactToastify.css';
+import { GeneratedContext } from '../src/components/Contexts';
 
 function MyApp(props) {
   const {
@@ -54,10 +54,12 @@ function MyApp(props) {
   // Dark Mode Handler
   const handleDarkMode = () => setDarkMode(!darkMode);
 
+  const title = 'Emre MUTLU & Ercan AKALAR';
+
   return (
-    <SessionProvider session={session}>
+    <GeneratedContext.Provider session={session}>
       <Head>
-        <title>Emre MUTLU - SHOWROOM</title>
+        <title>PROJECT SHOWROOM - {title}</title>
       </Head>
       <CssBaseline />
       <ThemeProvider theme={theme}>
@@ -83,7 +85,7 @@ function MyApp(props) {
         draggable
         pauseOnHover
       />
-    </SessionProvider>
+    </GeneratedContext.Provider>
   );
 }
 
