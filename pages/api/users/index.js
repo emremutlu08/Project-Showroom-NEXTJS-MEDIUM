@@ -1,9 +1,6 @@
 /** USER */
-import { getSession } from 'next-auth/react';
-import { getToken } from 'next-auth/jwt';
 
 /* DATABASE */
-import dbConnect from '../../../lib/dbConnect';
 import Users from '../../../models/Users';
 
 /* MESSAGES */
@@ -18,21 +15,18 @@ import {
   USER_LISTED,
   USER_LISTED_ERROR,
 } from '../../../lib/api/users/messages';
-
-/** ENVIRONMENT */
-const secret = process.env.JWT_SECRET;
+import connect from '../../../lib/database';
+import jwt from 'jsonwebtoken';
+import { getCookie } from 'cookies-next';
 
 /* MAIN FUNCTION */
 export default async function handler(req, res) {
   const { method, body } = req;
-  await dbConnect();
-  const session = await getSession({ req });
-  const token = await getToken({ req, secret });
-  const isModified =
-    token?.accessToken !== session?.accessToken ||
-    token?.email !== session?.user?.email;
+  await connect();
 
-  if (isModified) {
+  const token = getCookie('token');
+
+  if (!token) {
     return res.status(401).json({
       success: false,
       message: UNAUTHORIZED,
@@ -40,17 +34,19 @@ export default async function handler(req, res) {
     });
   }
 
+  const userId = jwt.decode(token);
+
   const createUserBody = {
     ...body,
   };
 
   const filter = {
-    email: session?.user?.email,
+    userId,
   };
 
   // Only PUT method is allowed
   if (method === 'PUT') {
-    if (!createUserBody?.username) {
+    if (!createUserBody.username) {
       return res.status(406).json({
         success: false,
         message: FILL_AREAS,
@@ -87,7 +83,7 @@ export default async function handler(req, res) {
     // Get the user
     case 'GET':
       try {
-        const userItem = await Users.findOne({ email: session?.user?.email });
+        const userItem = await Users.findById({ _id: userId });
 
         if (!userItem) {
           return res.status(400).json({

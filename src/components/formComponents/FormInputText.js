@@ -20,6 +20,7 @@ export default function FormInputText(props) {
     variant = 'standard',
     error = false,
     type = 'string',
+    disabled,
   } = props;
 
   return (
@@ -38,6 +39,7 @@ export default function FormInputText(props) {
             variant={variant}
             error={error}
             type={type}
+            disabled={disabled}
           />
         </FormControl>
       )}

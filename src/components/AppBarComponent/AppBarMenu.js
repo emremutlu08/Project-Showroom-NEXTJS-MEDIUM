@@ -10,12 +10,11 @@ import { Divider } from '@material-ui/core';
 /* COMPONENTS */
 import ListItemIconButton from '../General/ListItemIconButton';
 import UrlHomepage from '../General/UrlHomepage';
-import { useSession } from 'next-auth/react';
+
+import { getCookie } from 'cookies-next';
 
 /* MAIN FUNCTION */
 export default function AppBarMenu(props) {
-  const { data, status } = useSession();
-
   const { setOpenMenu, openMenu } = props;
   const closeMenu = () => setOpenMenu(false);
   const firstItem = {
@@ -26,7 +25,9 @@ export default function AppBarMenu(props) {
   const secondItem = {
     url: UrlHomepage('/my-details'),
     text: 'Manege Your Details',
-  }; // TODO: BURASI HAZIRLANACAK VE PROFİL OLUŞTURULACAK
+  };
+
+  const cookieExists = getCookie('token');
 
   const LeftMenuList = () => (
     <List>
@@ -49,22 +50,25 @@ export default function AppBarMenu(props) {
     </List>
   );
 
-  if (status !== 'authenticated') return null;
-  console.log(data?.user?.email, 'data');
-
   return (
     <>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={() => setOpenMenu(true)}
-      >
-        <MenuIcon />
-      </IconButton>
-      <Drawer anchor={'left'} open={openMenu} onClose={closeMenu}>
-        <LeftMenuList />
-      </Drawer>
+      {cookieExists ? (
+        <>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setOpenMenu(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Drawer anchor={'left'} open={openMenu} onClose={closeMenu}>
+            <LeftMenuList />
+          </Drawer>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

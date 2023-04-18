@@ -20,6 +20,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+<<<<<<< HEAD
+=======
+const copyrightWhoHas = 'Emre MUTLU & ERCAN AKALAR';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      <div>
+        Copyright © by{' '}
+        <Link
+          href="https://www.linkedin.com/in/emremutlu8/"
+          target="_blank"
+          color="inherit"
+        >
+          {copyrightWhoHas}
+        </Link>
+        .
+      </div>
+      <div>
+        You are 100% allowed to use this webpage for both personal and
+        commercial use, but NOT to claim it as your own app.
+      </div>{' '}
+      <div>
+        A credit to the original author,{' '}
+        <Link
+          href="https://project-showroom.vercel.app/"
+          target="_blank"
+          color="inherit"
+        >
+          {copyrightWhoHas}
+        </Link>
+        , is of course highly appreciated!!
+      </div>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
+const didByWho = 'Emre MUTLU & Ercan AKALAR';
+
+>>>>>>> e7026c81aa166b66021caf8943982819c3ba0be4
 export default function Footer() {
   const classes = useStyles();
   return (
@@ -34,7 +75,7 @@ export default function Footer() {
         >
           {' '}
           <LinkNext href="https://project-showroom.vercel.app/" passHref>
-            <Link>PROJECT GALLERY | By Emre MUTLU</Link>
+            <Link>PROJECT GALLERY | {didByWho}</Link>
           </LinkNext>
         </Typography>
         <div className={classes.gap} />

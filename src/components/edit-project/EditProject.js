@@ -16,6 +16,8 @@ import { AllIcons } from '../GetIcons';
 import { notifySuccess } from '../toasts/notifySuccess';
 import { notifyError } from '../toasts/notifyError';
 
+import { getCookie, setCookie } from 'cookies-next';
+
 const useStyles = makeStyles((theme) => ({
   form: {
     padding: theme.spacing(2),
@@ -40,45 +42,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddProjectForm({ props }) {
+export default function EditProject({ props }) {
+  const { control, handleSubmit } = useForm();
   const classes = useStyles();
 
-  const { control, handleSubmit, reset } = useForm();
-
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(props.skillTags || []);
 
   const onSubmit = async (data) => {
+    const getCardId = getCookie('cardIdToken') || null;
+
     const projectValues = {
       ...data,
       skillTags: tags,
-      ...props,
     };
-    if (data.projectTitle && data.thumbnailUrl) {
-      const response = await fetch('/api/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(projectValues),
-      });
-      const notifyProjects = await response.json();
+    const response = await fetch(`/api/projects/${getCardId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(projectValues),
+    });
 
-      if (notifyProjects.success === true) {
-        reset({
-          projectTitle: '',
-          thumbnailUrl: '',
-          description: '',
-          leftButtonTitle: 'View Online',
-          leftButtonUrl: '',
-          rightButtonTitle: 'View Codes',
-          rightButtonUrl: '',
-        });
-        setTags([]);
-        notifySuccess(notifyProjects.message || 'created');
-      } else {
-        notifyError(notifyProjects.message || 'error');
-      }
+    if (response.status === 200) {
+      notifySuccess('Updated successfully');
+    } else {
+      notifyError('Something went wrong');
     }
+    setCookie('cardIdToken');
   };
 
   return (
@@ -90,6 +80,7 @@ export default function AddProjectForm({ props }) {
         formId="projectTitle"
         control={control}
         label="Project Title"
+        defaultValue={props.projectTitle}
         required
       />
       <div className={classes.margin} />
@@ -98,6 +89,7 @@ export default function AddProjectForm({ props }) {
         formId="thumbnailUrl"
         control={control}
         label="Thumbnail Url"
+        defaultValue={props.thumbnailUrl}
         required
       />
       <div className={classes.margin} />
@@ -105,6 +97,7 @@ export default function AddProjectForm({ props }) {
         formId="description"
         control={control}
         placeholder="Description"
+        defaultValue={props.description}
       />
       <div className={classes.margin} />
       <FormAutocomplete
@@ -114,6 +107,7 @@ export default function AddProjectForm({ props }) {
         tags={tags}
         options={AllIcons}
         helperText="If you cannot find your technology, you can write it anyway."
+        defaultValue={props.skillTags}
       />
       <div className={classes.margin} />
       <div className={classes.doubleForms}>
@@ -129,6 +123,7 @@ export default function AddProjectForm({ props }) {
           helperText="(If you don't have url for this button, please
         leave it empty)"
           label="Left Button Url"
+          defaultValue={props.leftButtonUrl}
         />
       </div>
       <div className={classes.margin} />
@@ -145,6 +140,7 @@ export default function AddProjectForm({ props }) {
           helperText="(If you don't have url for this button, please
         leave it empty)"
           label="Right Button Url"
+          defaultValue={props.rightButtonUrl}
         />
       </div>
       <div className={classes.margin} />
@@ -158,7 +154,7 @@ export default function AddProjectForm({ props }) {
           type="submit"
           size="large"
         >
-          Send
+          Update
         </Button>
       </Box>
     </form>

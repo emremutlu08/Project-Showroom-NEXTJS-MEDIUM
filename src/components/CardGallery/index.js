@@ -1,6 +1,3 @@
-/* REACT */
-import { useContext } from 'react';
-
 /* MATERIAL UI */
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -10,10 +7,6 @@ import { Divider } from '@material-ui/core';
 import FilterButtons from './FilterButtons';
 import PaginationOutlined from './PaginationOutlined';
 import CardGalleryItems from './CardGalleryItems';
-
-/* CONTEXTS */
-import { GeneratedContext } from '../Contexts';
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -44,36 +37,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardGallery() {
-  const props = useContext(GeneratedContext);
+export default function CardGallery({ currentUserProjects, currentUser }) {
   const classes = useStyles();
-  if (props?.projects?.loading) {
-    return <div>Loading...</div>;
-  }
-  const cards = props?.projects?.data ?? [];
+
+  const cards = currentUserProjects || [];
   const isShowFilters = process.env.NEXT_PUBLIC_IS_FILTERS_ACTIVE;
   return (
-    <Container className={classes.cardGrid} maxWidth="md">
-      <>
-        {isShowFilters === 'true' && (
+    <>
+      {currentUser && (
+        <Container className={classes.cardGrid} maxWidth="md">
           <>
-            <FilterButtons />
-            <Divider variant="middle" light className={classes.topSpace} />
-            <div className={classes.allSpace} />
+            {isShowFilters === 'true' && (
+              <>
+                <FilterButtons />
+                <Divider variant="middle" light className={classes.topSpace} />
+                <div className={classes.allSpace} />
+              </>
+            )}
+            {/* End hero unit */}
+            {cards.length !== 0 ? (
+              <>
+                <PaginationOutlined length={cards.length} />
+                <div className={classes.allSpace} />
+                <CardGalleryItems cards={cards} />
+                <div className={classes.allSpace} />
+                <PaginationOutlined length={cards.length} />
+              </>
+            ) : (
+              <p>
+                If you add projects or search user, you will see all of them in
+                here.
+              </p>
+            )}
           </>
-        )}
-
-        {/* End hero unit */}
-        <PaginationOutlined length={cards.length} />
-        <div className={classes.allSpace} />
-        <CardGalleryItems cards={cards} />
-        <div className={classes.allSpace} />
-        <PaginationOutlined length={cards.length} />
-      </>
-    </Container>
+        </Container>
+      )}
+    </>
   );
 }
-
-CardGallery.propTypes = {
-  projects: PropTypes.object,
-};
